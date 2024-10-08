@@ -1,0 +1,10 @@
+===================================================== Add Custom Styles =====================================================
+
+1 -> Add static/src/css folders into the module folder
+
+2 -> Add a css file for the model into the css folder
+
+3 -> Add: "assets" : {
+               "web.assets_backend" : ["css_file_path_beginning_from_the_module_folder"]
+          },
+     To the manifest file of the module

@@ -1,0 +1,30 @@
+===================================================== Validation Methods =====================================================
+
+------------------ Logic tier ------------------
+
+# We can add attributes inside the parenthesis of the field in the model's python file like: required, default, size, digits=(0, value)
+
+# We can add a constraint for a specific field in the model's python file :
+     @api.constrains('field_name')
+     def function_name(self):
+          for rec in self:
+               condition:
+                    raise ValidationError('error_message')
+
+# We must import the ValidationError by adding : from odoo.exceptions import ValidationError in the model's python file
+
+# When i add a constraint in the logic tier it added automatically to the database tier
+
+------------------ Presentation tier ------------------
+
+# We can add attributes inside the form fields of the model's xml file like : required
+
+------------------ Database tier ------------------
+
+# We can add a constraint in the database tier by adding it to the model's python file :
+
+     _sql_constraints = [
+          ('constaint_name', 'constraint("field_name")', 'error_message')
+     ]
+
+# When i add a new constraint and it find at least one record don't achieves this constraint it don't create in the database (constraint) 

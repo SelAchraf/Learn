@@ -1,0 +1,96 @@
+===================================================== Types of Actions =====================================================
+
+# Window Actions (ir.actions.act_window) => related to the different views
+
+# Server Actions (ir.actions.server) => related to the ations button and icon in the form and tree views ...
+
+# Report Actions (ir.actions.report) => is responsable of handling the reports printing
+
+# Automated Actions (ir.cron) => related to the automatic actions (triggered without the user invention)
+
+# URL Actions (ir.actions.act_url)
+
+# Client Actions (ir.actions.client)
+
+===================================================== Server Actions =====================================================
+
+# We add the server actions records in the "data/server_action.xml" file
+
+# Syntax :
+
+<record id="action_id" model="ir.actions.server">
+     <field name="name">action_name</field>
+     <field 
+          name="model_id" 
+          ref="model_model_name"
+     />
+     <field 
+          name="binding_model_id"
+          ref="model_model_name"
+     />
+     <field name="state">code</field>
+     <field name="code">
+          action = records.action_name()
+     </field>
+</record>
+
+===================================================== Automated Actions (Cron Jobs) =====================================================
+
+# We add the cron jobs records in the "data/cron.xml" file
+
+------------------ Add a check function ------------------
+
+# We don't use for loop with self ( i must use it with self.search([]) after i stoke it into a variable )
+
+def function_name(self):
+     variable_name = self.search([])
+     for rec in variable_name:
+          # Logic
+
+# I can add conditions to the search method
+
+------------------ Add a record for the Automated Action ------------------
+
+<record id="action_id" model="ir.cron">
+     <field name="name">action_name</field>
+     <field name="model_id" ref="model_model_id"/>
+     <field name="state">code</field>
+     <field name="code">model.function_name()</field>
+     <field name="interval_number">value</field>
+     <field name="interval_type">value</field>
+     <field name="numbercall">value</field>
+     <field name="active">True</field>
+</record>
+
+# I can run manually the Automated Action when i want to test if it work perfectly or not
+
+===================================================== Reports Actions (Pdf & Html) =====================================================
+
+<record id="action_id" model="ir.actions.report">
+     <field name="name">action_name</field>
+     <field name="model">model_name</field>
+     <field name="report_type">qweb-pdf</field>
+     <field name="binding_model_id" ref="model_model_name"/>
+     <field name="binding_type">report</field>
+     <field name="report_name">module_name.template_id</field>
+</record>
+
+<template id="template_id">
+     <t t-call="web.html_container">
+          <t t-call="web.external_layout">                  
+               <t t-foreach="docs" t-as="o">
+                    # Html Code
+               </t>
+          </t>    
+     </t>
+</template>
+
+------------------------------------------------------------------------
+
+# t-field="o.field_name" => for the relational fields or money value to be with the money sign
+
+# t-esc="o.field_name"
+
+# web.basic_layout
+
+# qweb-html

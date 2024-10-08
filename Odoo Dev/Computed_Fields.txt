@@ -1,0 +1,32 @@
+===================================================== Computed Fields =====================================================
+
+# The computed fields don't store into the database but when i make it storable (store=True) we must use the decorator Onchange or Depends to be triggered 
+  everytime the value is changed (if i don't use them it will triggred only for the first time)
+
+# Syntax : field_name = fields.Type(compute='_compute_field_name', store=boolean_value, readonly=boolean_value)    
+
+------------------ Onchange ------------------
+
+# I can use just the model fields
+
+# It call the method when the onchange fields value changed (from only the form view)
+
+# The return is a sudo record (i can't use the CRUD operations with it i can just use the . or the update method)
+
+# Syntax :     @api.onchange('field_name')
+               def _onchange_field_name(self):
+                    for rec in self:
+                         # Logic
+
+------------------ Depends ------------------
+
+# I can use the model fields and the model relational fields
+
+# It call the method when the depend fields value changed (from the form view or another method)
+
+# The return is a record
+
+# Syntax :     @api.depends('field_name','field_name')
+               def _compute_field_name(self):
+                    for rec in self:
+                         # Logic

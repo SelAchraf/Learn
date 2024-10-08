@@ -1,0 +1,18 @@
+===================================================== Add Custom Buttons to​ Inherited Form Views =====================================================
+
+1 => Inherit the model in a new py file
+
+2 => Add a new action to the inherited model with the needed logic
+
+3 => Inherit the form view in a new xml file :
+
+<record id="form_view_id" model="ir.ui.view">
+     <field name="name">form_view_name</field>
+     <field name="model">inherited_model_name</field>
+     <field name="inherit_id" ref="inherited_form_view_id"></field>
+     <field name="arch" type="xml">
+          <xpath expr="//header" position="inside">
+               <button name="action_name" string="action_name" type="object" class="bootstrap_class"/>
+          </xpath>
+     </field>
+</record>

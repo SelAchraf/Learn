@@ -1,0 +1,73 @@
+===================================================== Controlling Permissions =====================================================
+
+# Using the logic tier (security file)
+
+------------------ Using the presentation tier (xml file) ------------------
+
+multi_edit ="1" => when i add it to an tree i will be able to modify the value of a specific field from the tree view (when i select the record) or from the form
+                    view (when i click on the record)
+
+# I can use other attributes (create, edit, delete) with the tree view and the form view
+
+===================================================== Access Rights and Groups =====================================================
+
+------------------ Create groups ------------------
+
+1 => Add a 'security.xml' file in the security folder 
+
+2 => Add the path in the manifest file 
+
+3 => Syntax : 
+
+    <record id="group_id" model="res.groups">
+        <field name="name">group_name</field>
+    </record>
+
+------------------ Manage access rights ------------------
+
+# Using the ir.model.access.csv file : 
+
+     access_model_name,access_model_name,model_model_name,group_id,value,value,value,value
+
+# Using the model py file (fields) :
+
+     field_name = fields.Type(groups="module_name.group_id")
+
+# Using the model xml file  (fields) : 
+
+     <field name="field_name" groups="module_name.group_id"></field>
+
+# Using the menus : 
+
+     <menuitem
+        id="menu_id"
+        name="menu_name"
+        parent="parent_menu_id"
+        groups="module_name.group_id"
+    />
+
+------------------ Create categories ------------------
+
+# In the security xml file 
+
+# Syntax : 
+
+<record id="category_id" model="ir.module.category">
+     <field name="name">category_name</field>
+</record>
+
+# We add this field to the group who we want to realte it with the category : 
+
+<field name="category_id" ref="module_name.category_id"/>
+
+------------------ Record Rules ------------------
+
+<record id="record_rule_id" model="ir.rule">
+     <field name="name">record_rule_name</field>
+     <field name="model_id" ref="module_name.model_model_name"/>
+     <field name="domain_force">[domain]</field>
+     <field name="perm_read" eval="Value"/>
+     <field name="perm_write" eval="Value"/>
+     <field name="perm_create" eval="Value"/>
+     <field name="perm_unlink" eval="Value"/>
+</record>

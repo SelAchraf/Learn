@@ -1,0 +1,89 @@
+================================================ Connect an existing project to a remote repo ================================================
+
+git init 
+git remote add origin github_repo_link 
+git push -u origin branch_main => pull the modifications before pushing them
+
+================================================ Clone the remote repo into the local ================================================
+
+git clone repo_link
+
+================================================ Branch ================================================
+
+git branch => list of branches
+
+git branch branch_name => create a branch 
+
+git checkout branch_name => switch to the branch_name
+
+git checkout -b branch_name => create a new branch and switch to it
+
+git branch -m new_branch_name => changing the current branch name
+
+git branch -d branche_name => delete branch 
+
+git branch -D branche_name => force deleting branch
+
+================================================ Merge ================================================
+
+git merge branch_name 
+
+================================================ Push ================================================
+
+git remote -v => show the remote name 
+
+git push remote_name branch_name => push the current branch into the remote branch
+
+git push --set-upstream origin branch_name => push the current branch into the remote branch and then it sets the upstream branch for the current local branch
+
+================================================ Pull ================================================
+
+git pull => bring changes from the current branch ( on the remote repo ), if the current branch has an upstream branch set up, it will pull the changes from this upstream branch  and then it merges them into the current branch
+
+git pull --set-upstream remote_name branch_name => sets the upstream branch for the current branch, and then fetches and merges changes from the specified remote branch
+
+git pull remote_name branch_name => bring changes from a specific branch and merges them into the current branch
+
+================================================ Pull request ================================================
+
+gh pr create --base target_branch --head branch_name --title "..." --body "Description of the PR" => Create a pull request 
+
+================================================ Git status ================================================
+
+git status => display the state of the working directory ( Branch Information, Staged Changes, Unstaged Changes, Untracked Files )
+
+git add file_name => stage changed file, or start tracking Untracked file
+
+git add . => stage all changed files, or start tracking all Untracked files
+
+git restore --staged file_name => unstage the file
+
+git commit -m"..." => create a commit with a specific comment
+
+================================================ Git log ================================================
+
+git log => see the commit history of the current branch
+
+git log -n <number> => show only the last <number> commits
+
+git log --author=<author> => show commits by a specific author
+
+git log --since="..." --until="..." => show commits made between since date and until date 
+
+git log --grep="bug fix" => show commits with a message that matches the pattern
+
+================================================ Git diff ================================================
+
+git diff => shows the difference between the current state of your working directory and the staging area
+
+git diff --cached => shows the difference between the files in the staging area and the last commit in your Git repository
+
+git diff <commit> <commit> => compare different commits by specifying their hashes or references
+
+git diff <branch>..<branch> => To compare changes between branches
+
+================================================ Git reset ================================================
+
+git reset --hard commit_hashe => delete all commits located after commit_hashe
+
+git push remote_name branch_name --force => update the branch after i delete commits

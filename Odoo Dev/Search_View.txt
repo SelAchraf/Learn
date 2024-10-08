@@ -1,0 +1,18 @@
+===================================================== Search View =====================================================
+
+<record id="record_id" model="ir.ui.view">
+     <field name="name">record_name</field>
+     <field name="model">model__name</field>
+     <field name="arch" type="xml">
+          <search>
+               <field name="field_name"></field>
+               <field name="field_name"></field>
+               <filter name="filter_id" string="filter_name" domain="[('field_name', 'operator', 'value')]"/>                     # Filter
+               <filter name="Group_By_id" string="Group_By_name" context="{'group_by': 'field_name'}" />                          # Group By 
+          </search>
+     </field>
+</record>
+
+# If we don't create a search view for a specific model it create a default search with one option of searching (the default field -> name) 
+
+# If the default field (name) don't exist the default search option will be the id

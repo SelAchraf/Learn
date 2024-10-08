@@ -1,0 +1,21 @@
+===================================================== Add Workflow/States =====================================================
+
+1 -> Add a selection field :
+                              field_name = fields.Selection(
+                                   selection=[
+                                        ("state_1" , "State_1"),
+                                        ("state_2" , "State_2"),
+                                        ("state_3" , "State_3")
+                                   ],
+                                   default='draft'
+                              )
+
+2 -> Add it to the form view :
+                              <header>
+                                   <field 
+                                        name="field_name"                       
+                                        widget="statusbar"
+                                        statusbar_visible="state_1, state_2"
+                                        options="{'clickable': True}"
+                                   />
+                              </header>

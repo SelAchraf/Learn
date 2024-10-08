@@ -1,0 +1,20 @@
+===================================================== Add O2m Lines ​& Notebook & Pages Tabs =====================================================
+
+1 -> We add a new One2many field in the model
+
+2 -> We add a new class to the model and we create on it a Many2one field
+
+3 -> We add an access line to the security file for the new class
+
+4 -> Add a notebook to the sheet of the form view of the model :
+
+     <notebook>
+          <page string="Book_name">
+               <field name="One2many_field_name">
+                    <tree editable="bottom">
+                         <field name="field_name"></field>
+                         <field name="field_name"></field>
+                    </tree>
+               </field>
+          </page>
+     </notebook>

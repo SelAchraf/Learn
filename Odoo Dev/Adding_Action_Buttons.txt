@@ -1,0 +1,9 @@
+===================================================== Adding Action Buttons =====================================================
+
+1 -> Add a model method :
+                         def method_name(self):
+                              for rec in self:
+                                   # Logic
+
+2 -> Add a button to the form view of the model : 
+     <button name="method_name" type="object" class="bootstrap_class" string="button_string" invisible="condition or boolean value"/>

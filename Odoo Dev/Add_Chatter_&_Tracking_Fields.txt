@@ -1,0 +1,16 @@
+===================================================== Add Chatter & Tracking Fields =====================================================
+
+1 -> Add mail to the depends of the module (manifest file)
+
+2 -> Inherit mail.thread and mail.activity.mixin in the model 
+
+3 -> Add <div class="oe_chatter">
+               <field name="message_follower_ids"></field>
+               <field name="activity_ids"></field>
+               <field name="message_ids"></field>
+         </div>
+     To the form view of the model (under the sheet)
+
+4 -> Add the tracking=True attribute to the fields of the model
+
+5 -> When i create a new record it show me a tracking message with the content : _description created 

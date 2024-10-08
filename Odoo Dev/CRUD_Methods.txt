@@ -1,0 +1,33 @@
+===================================================== CRUD Methods =====================================================
+
+# We add this methods to the model's python file
+
+------------------ Create ------------------
+
+@api.model_create_multi
+    def create(self, vals):
+        res = super(model__name, self).create(vals)
+        # Logic
+        return res
+
+------------------ Read ------------------
+
+@api.model
+    def _search(self, domain, offset=0, limit=None, order=None, access_rights_uid=None):
+        res = super(model__name, self)._search(domain, offset=0, limit=None, order=None, access_rights_uid=None)
+        # Logic
+        return res
+
+------------------ Update ------------------
+
+def write(self, vals):
+        res = super(model__name, self).write(vals)
+        # Logic
+        return res
+
+------------------ Delete ------------------
+
+def unlink(self):
+     res = super(model__name, self).unlink()
+     # Logic
+     return res

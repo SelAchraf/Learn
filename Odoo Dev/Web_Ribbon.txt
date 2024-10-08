@@ -1,0 +1,7 @@
+===================================================== web_ribbon =====================================================
+
+# We add the widget balise inside the sheet balise in the xml file of the model (form view)
+
+# Syntax :
+
+<widget name="web_ribbon" title="title" bg_color="bootstrap_class" invisible="condition"/>

@@ -1,0 +1,9 @@
+===================================================== Related Fields =====================================================
+
+# Syntax : field_name = fields.Type(related='relational_field_name.field_name', readonly=boolean_value, store=boolean_value)
+
+# The related fields doesn't store in the database (store=False)
+
+# The related fields are readonly (readonly=True)
+
+# The related field must have the same type of the second field

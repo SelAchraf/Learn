@@ -1,0 +1,22 @@
+===================================================== Models Types =====================================================
+
+------------------ Model ------------------
+
+class ModelA(models.Model):
+    _name = "model.a"
+
+# It create a table on the database
+
+------------------ Transient Model ------------------
+
+class ModelB(models.TransientModel):
+    _name = "model.b"
+
+# It create a table on the database
+
+------------------ Abstract Model ------------------
+
+class ModelC(models.AbstractModel):
+    _name = "model.c"
+
+# It don't create a table on the database

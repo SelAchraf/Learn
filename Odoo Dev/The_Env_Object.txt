@@ -1,0 +1,17 @@
+===================================================== The Env Object =====================================================
+
+# env is an object and it is an instance of odoo.api.environment class
+
+self.env.user => return the current user object
+self.env.user.login => return the current user login
+self.env.user.name => return the current user name
+self.env.user.id => return the current user id
+self.env.uid => return the current user id
+self.env.company => return the current company object
+self.env.company.name => return the current company name
+self.env.company.id => return the current company id
+self.env.company.street => return the current company street
+self.env['model_name'].create({
+     # fields
+})
+self.env['model_name'].search([])

@@ -1,0 +1,7 @@
+===================================================== Automatic Fields =====================================================
+
+# When i create a model it turns into a table containing 5 automatic columns (id, create_uid, write_uid, create_date, write_date)
+
+# We can cancel the creation of the automatic columns (create_uid, write_uid, create_date, write_date) by adding _log_access = False to the model
+
+# We can't cancel the creation of the id column because it is an oligatory for each table (model)

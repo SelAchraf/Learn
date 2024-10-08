@@ -1,0 +1,9 @@
+# \b => Back Space                  print("Hello\bWorld")  # Will Remove o
+# \newline => Escape New Line + \
+# \\ => Escape Back Slash           print("I Love Back Slash \\")
+# \' => Escape Single Quotes        print('I Love Single Quote \'Test\' ')
+# \" => Escape Double Quotes        print("I Love Double Quotes \"Test\" ")
+# \n => Line Feed
+# \r => Carriage Return             print("123456\rAbcde")
+# \t => Horizontal Tab
+# \xhh => Character Hex Value       print("\x4F\x73")

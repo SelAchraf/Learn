@@ -1,0 +1,40 @@
+===================================================== Create Wizards =====================================================
+
+------------------ Add a server action record in the view xml file of the model ------------------
+
+<record id="server_action_id" model="ir.actions.server">
+     <field name="name">action_name</field>
+     <field 
+          name="model_id" 
+          ref="model_model_name"
+     />
+     <field 
+          name="binding_model_id"
+          ref="model_model_name"
+     />
+     <field name="state">code</field>
+     <field name="code">
+          action = records.open_wizard_function_name()
+     </field>
+</record>
+
+------------------ Add an open wizard function in the py file of the model ------------------
+
+def function_name(self):
+     action = self.env['ir.actions.actions']._for_xml_id('module_name.window_action_id')
+     action['context'] = {'default_field_name': self.id}
+     return action
+
+------------------ Add a window action in the wizard view xml file ------------------
+
+<record id="window_action_id" model="ir.actions.act_window">
+     <field name="name">action_name</field>
+     <field name="res_model">model_name</field>
+     <field name="target">new</field>
+     <field name="view_mode">form</field>
+</record>
+
+------------------ Add a confirm function in the wizard py file ------------------
+
+def function_name(self):
+     # logic

@@ -1,0 +1,239 @@
+===================================================== Introduction =====================================================
+
+# document.write(“hello world”)
+
+# console.log(“hello world”)
+
+# console.error(“hello world”)
+
+# window.alert(“hello world”)
+
+# window.prompt('prompt_text')
+
+# window.print(“hello world”)
+
+# We can find the error using the consol
+
+-------------------------- Primitive data types -------------------------- 
+
+# String    # Number    # Boolean   # Null  # Undefined
+
+# We can know the type using typeof
+
+-------------------------- Variables -------------------------- 
+
+# var   # let   # const
+
+# We can declare a variable without a value when we use var or let 
+
+# We must add the variable value when we using const and we can't change the value of a const variable
+
+# We can't declare the same variable more than once when we use let but we can do it using var
+
+-------------------------- Concatenation --------------------------
+
+# console.log('my name is ' + name + ' ' + 'and my age is ' + age)          # first methode
+
+# console.log(`my name is ${name} and my age is ${age}`)                    # second methode
+
+===================================================== Numbers =====================================================
+
+-------------------------- Calculation --------------------------
+
+# let num = 4 + 5;      # let num = 5 – 4;      # let num = 4 * 5;      # let num = 5 / 4;      # let num = 5 % 2;      # let num = 4 ** 5;
+
+# num = num + 5; => num += 5;       # num = num + 1; => num++;      # num = num - 1; => num--;
+
+-------------------------- Convert to number --------------------------
+
+# let x = +‘5’;         # let x = +‘abdelrahman’;           # let x = +undefined;           # let x = +true;            # let x = +null;
+
+# let x = –‘5’;         # let x = –‘abdelrahman’;           # let x = –undefined;           # let x = –true;            # let x = –null;
+
+# let x = Number(‘5’); => we can use it just with the numbers
+
+# let x = parsInt(‘5’); => we can use it if the content start with a number (it return just integer numbers so we don't use it if the content is a float 
+  number)
+
+# let x = parsFloat(‘5’); => we can use it if the content start with a number (it return float numbers so we can use it if the content is a float number)
+
+-------------------------- Number --------------------------
+
+# MAX_VALUE         # MIN_VALUE         # MAX_SAFE_INTEGER          # MIN_SAFE_INTEGER          # isSafeInteger()           # isInteger()           
+
+# isNan()
+
+-------------------------- Math --------------------------
+
+# E     # PI    # abs()     # sqrt()    # pow()     # round()   # ceil()    # floor()   # min()     # max()
+
+===================================================== Strings =====================================================
+
+-------------------------- Convert to string --------------------------
+
+# String(10)        
+
+# (10).toString()       
+
+# x.toString()      
+
+# 10...toString()
+
+-------------------------- String methods --------------------------
+
+# search()
+
+# .repeat()         
+
+# .lenght       
+
+# variable[index] => if the index is out of the variable range it show undefined
+
+# .charAt(index) => if the index is out of the variable range it don't show anything
+
+# .toUpperCase()
+
+# .toLowerCase()
+
+# .trim() => remove spaces from the left and the right of the variable not from the middle of it
+
+# .indexOf() => it return -1 if the element doesn't exist
+
+# .lastIndexOf() => it return -1 if the element doesn't exist          
+
+# .split()
+
+# .slice() => it accept negative value (to read from the end)
+
+# .substring() => it don't accept negative value
+
+# .substr() => the first value is for the start and the second is for the lenght of slicing
+
+# .includes() => it return true or false
+
+# .startsWith() => the second value is for the start
+
+# .endsWith() => the second value is for the lenght
+
+===================================================== Arrays =====================================================
+
+# []
+
+# We can create a list with different data types 
+
+# We can change an element from the list
+
+# .lenght => get the list lenght
+
+# .push() => add an element to the last of the list 
+
+# .unshift() => add an element to the begenning of the list 
+
+# .shift() => remove the first item from the list and stock it 
+
+# .pop() -> remove the last item from the list and stock it 
+
+# .splice(start, count, add) => remove form the list and we can use it to add elements to the list 
+
+# .slice(start, end) => get ele,elements from the list
+
+# .indexOf() => it return -1 if the element doesn't exist
+
+# .lastIndexOf() => it return -1 if the element doesn't exist     
+
+# .includes() => it return true or false
+
+# .reverse()
+
+# .sort()
+
+# .join('separetor')
+
+# .concat()
+
+===================================================== Comparison & Conditional Statements =====================================================
+
+-------------------------- Comparison --------------------------
+
+# We can compare values using == , != , < , > , <= , >=
+
+# To compare values and datatypes we use ===
+
+# We can make a multiple comparison using && or ||
+
+-------------------------- If & Else --------------------------
+
+------------- First Syntax -------------
+
+if (condition){
+  code;
+}                      
+else if (condition){
+  code;
+}                     
+else{
+  code;
+}                                  
+
+------------- Second Syntax -------------
+
+condition?
+  code;
+  :condition?
+    code
+    : code
+                                       
+# If we use the second syntax of if and else conditions we can stock this conditions in a variable 
+
+-------------------------- Switch --------------------------
+
+switch (var){
+  case 'value' :
+    code;
+    break;
+  case 'value' :
+    code;
+    break;
+  default :
+    code;
+}
+
+We can use switch with only the equal conditions
+
+===================================================== Loop =====================================================
+
+-------------------------- For --------------------------
+
+for (start; condition; steps){
+  code;
+}
+
+-------------------------- Continue --------------------------
+
+for (start; condition; steps){
+  continue;
+  code;
+}
+
+-------------------------- Break --------------------------
+
+for (start; condition; steps){
+  break;
+  code;
+}
+
+-------------------------- While --------------------------
+
+let var = value;
+while (condition){
+  code;
+  var ++;   # or any operation for the var
+}
+
+-------------------------- Do While --------------------------
+
+let var = value;
+do { 
+  code;
+  var ++;   # or any operation for the var
+} while(condition);

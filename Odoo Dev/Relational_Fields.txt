@@ -1,0 +1,31 @@
+===================================================== Relational Fields =====================================================
+
+------------------ Many2one ------------------
+
+# Syntax : field_id = fields.Many2one(comodel_name='model_name')
+
+# It create a field_id column and a fkey constraint in the current model table
+
+------------------ One2many ------------------
+
+# Syntax : field_ids = fields.One2many(comodel_name='model_name', inverse_name='field_id')
+
+# The field_ids is related with the inverse_name field in the comodel_name model
+
+# We can delete or add a new value for the field_ids
+
+------------------ Many2many ------------------
+
+# Syntax : field_ids = fields.Many2many(comodel_name='model_name')
+
+# It create a new table (relational table) with two columns (the primary key of each model table)
+
+-----------------------------------------------
+
+# We add the "widget="many2many_tags" attribute to the relational field (One2many or Many2many) in the form view to be able to select or create a new value for it
+                  
+# We can add <tree string="Caption" create="true" delete="true" edit="true">
+                  <field name="name"/>
+             </tree>
+  with a specific fields inside the relational filed (One2many or Many2many) in the form view but when we want to add a new value to it we must create it 
+  (we can't select it from the existing values)

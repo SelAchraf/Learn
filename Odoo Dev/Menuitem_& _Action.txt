@@ -1,0 +1,18 @@
+===================================================== menuitem & action =====================================================
+
+<menuitem
+     id="menu_level_1"
+     name="menu_name"
+/>
+
+<record id="action_id" model="ir.actions.act_window">
+     <field name="name">action_name</field>
+     <field name="res_model">model__name</field>
+</record>
+
+<menuitem
+     id="menu_level_2"
+     name="menu_name"
+     parent="menu_level_1"
+     action="action_id"
+/>

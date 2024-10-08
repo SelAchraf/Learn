@@ -1,0 +1,384 @@
+===================================================== USERS & ROLES =====================================================
+
+CREATE ROLE role_name WITH attributes; => Create a new role with a specific attributes
+
+DROP ROLE role_name; => Delete a role
+
+ALTER ROLE role_name attributes; => Add a new attributes to an existing role 
+
+ALTER ROLE role_name NOattributes; => Remove attributes from an existing role 
+
+ALTER ROLE role_name WITH PASSWORD 'new_secure_password'; => Add or reset the role password ( the current role must have the permission to modify or adding the password )
+
+SELECT current_user; => Show the current role
+
+===================================================== ROLES ATTRIBUTES =====================================================
+ 
+# LOGIN => Allows the role to log in to the PostgreSQL database. Without this attribute, the role cannot connect to the database
+
+# SUPERUSER => Superusers can perform any action within the database, including modifying other roles and accessing all data
+
+# CREATEDB => Allows the role to create new databases
+
+# CREATEROLE => Allows the role to create new roles (users)
+
+# INHERIT => Allows the role to inherit privileges of roles it is a member of
+
+# REPLICATION => Allows the role to initiate streaming replication and perform certain replication-related operations
+
+# BYPASSRLS => Allows the role to bypass row-level security policies (RLS) when accessing tables
+
+# CONNECTION LIMIT: Sets the maximum number of concurrent connections that the role can have. For example, CONNECTION LIMIT 5 limits the role to 5 concurrent connections
+
+# PASSWORD 'password' => Sets a password for the role. This is optional but recommended for roles that need to log in (LOGIN attribute)
+
+# VALID UNTIL 'timestamp' => Specifies a timestamp until which the role's password is valid. After this timestamp, the role cannot log in unless the password is changed or reset
+
+# IN ROLE 'role_name' => Grants membership in another role (adds the role as a member of another role).
+
+# **ADMIN ** => Allows the role to perform administrative tasks such as pg_terminate_backend on other sessions.
+
+===================================================== Important commands =====================================================
+
+\l                                        # To show the list of databases ( after i open the psql interface )        
+\d                                        # To show the liste of tables with all information ( schema, name, type, owner) ( after access into the database )
+\d < table_name >                         # To show all informations about the table ( column, type, collation, nullable, default ) ( after access into the database )
+\du 					  # To show the list of roles
+
+===================================================== Connect to data base =====================================================
+ 
+sudo -i - u postgres                                                # Switch to the postgres user 
+psql                                                                # Open the psql interface with the current role ( postgres )
+psql -U role_name -d database_name                                  # Open the psql interface with the a specefic role and access to the mentionned database 
+\c < data_base_name >                                               # Connect to a local database
+
+sudo apt install postgresql-client
+psql -h <hostname> -p <port> -U <username> -d <database_name>       # Connect to a remote database
+
+===================================================== Disonnect to data base =====================================================
+
+\q        # To exit from the psql interface
+exit      # To logout from postgres system user and return to the the system user "shito"  
+
+===================================================== Create database =====================================================
+
+CREATE DATABASE < database_name >; => create a new database with the current role        
+
+CREATE DATABASE dbname OWNER rolename; => create a new database with a specefic role 
+
+===================================================== Delete database =====================================================
+
+DROP DATABASE < database_name >;  
+
+===================================================== Create table =====================================================
+
+CREATE TABLE < table_name > (
+    < column_name > < column_type > (< column_taille >)        # if the type is INT the column hasn't a taille 
+); 
+
+===================================================== Drop table =====================================================
+
+DROP TABLE < table_name >;
+
+===================================================== INSERT INTO =====================================================
+
+------------------ First methode ------------------
+
+INSERT INTO < table_name > (column_1, column_2, ...)
+VALUES (value_1, value_2, ...); 
+
+------------------ Second methode ------------------
+
+INSERT INTO < table_name >
+VALUES (value_1, value_2, ...); 
+
+------------------ Third methode ------------------
+
+INSERT INTO < table_name > (column_1, column_2, ...)
+VALUES (value_1, value_2, ...),
+       (value_1, value_2, ...),
+       (value_1, value_2, ...); 
+
+===================================================== DELETE =====================================================
+ 
+# Delete existing records in a table : 
+DELETE FROM < table_name >
+WHERE < column_name > = value;                                  # If you omit the WHERE clause, all records in the table will be deleted!
+
+# Delete all records in a table:
+TRUNCATE TABLE < table_name >;  
+
+===================================================== Operators =====================================================
+
+------------------ Arithmetic ------------------
+
+[ '+', '-', '*', '/', '%', '^', '!', '|/', '||/' ]
+
+------------------ Comparison ------------------
+
+[ '=', '<', '>', '<=', '>=', '!=', '<>' ]
+
+------------------ Logical ------------------
+
+[ 'AND', 'OR', 'IS NULL', 'LIKE', 'ILIKE', 'IN', 'BETWEEN', 'NOT' ]
+
+===================================================== Constraints =====================================================
+
+------------------ CHECK ------------------
+
+CREATE TABLE person (age INT CHECK(age > 0))
+
+------------------ UNIQUE ------------------
+
+CREATE TABLE courses (                              |           CREATE TABLE courses (
+    course_id INT UNIQUE,                           |               course_id INT,
+    course_title TEXT UNIQUE,                       |               course_title TEXT, 
+    lecture_no NUMERIC                              |               lecture_no NUMERIC
+);                                                  |               UNIQUE(course_id, course_title)
+                                                    |           );
+
+------------------ NOT NULL & DEFAULT ------------------
+    
+CREATE TABLE student(
+    std_id INT NOT NULL, 
+    std_name TEXT NOT NULL,
+    address TEXT DEFAULT'Achraf'
+);
+
+------------------ PRIMARY KEY & FOREIGN KEY ------------------
+
+CREATE TABLE products (
+    product_no INT PRIMARY KEY,
+    name TEXT,
+    price NUMERIC
+);
+CREATE TABLE orders(
+    order_id INT PRIMARY KEY,
+    product_no INT REFERENCES products(product_no),
+    quantity NUMERIC
+);
+
+------------------ ON DELETE & ON UPDATE ------------------
+
+CREATE TABLE products (
+    product_no INT PRIMARY KEY,
+    name TEXT,
+    price NUMERIC
+);
+
+CREATE TABLE orders(
+    order_id INT PRIMARY KEY,
+    product_no INT REFERENCES products(product_no) ON DELETE / ON UPDATE RESTRICT / CASCADE / SET NULL / SET DEFAULT,
+    quantity NUMERIC
+);
+
+===================================================== ALTER TABLE =====================================================
+
+------------------ ADD ------------------
+
+ALTER TABLE < table_name >
+ADD < column_name> < column_type > (< column_taille >),
+ADD < column_name> < column_type > (< column_taille >);
+
+------------------ ALTER COLUMN ------------------
+
+# To change the type of a column :
+
+ALTER TABLE < table_name >
+ALTER COLUMN < column_name > TYPE < column_type > (< column_taille >); 
+
+------------------ DROP COLUMN ------------------
+
+ALTER TABLE < table_name >
+DROP COLUMN < column_name >; 
+
+------------------ ADD CONSTRAINT ------------------ 
+
+# To add a constraint in the table (PRIMARY KEY, FOREIGN KEY, CHECK, UNIQUE):
+
+ALTER TABLE < table_name >
+ADD CONSTRAINT < constraint_name > < constraint_key > (column_name); 
+
+# To add a constraint in the column (NOT NULL, DEFAULT):
+
+ALTER TABLE table_name          |           ALTER TABLE table_name 
+ALTER COLUMN column_name        |           ALTER COLUMN column_name 
+SET NOT NULL;                   |           SET DEFAULT default_value;
+
+------------------ DROP CONSTRAINT ------------------ 
+
+# To delete a Constraint from the table :
+
+ALTER TABLE < table_name >
+DROP CONSTRAINT < constraint_name >; 
+
+------------------ RENAME TO ------------------
+
+# To modify the table name :
+
+ALTER TABLE < table_name >
+RENAME TO < table_new_name >; 
+
+===================================================== UPDATE =====================================================
+
+# Modify the records in a table :
+
+UPDATE < table_name >
+SET < column_name > = value, < column_name > = value
+WHERE < column_name > = value;                                  # Without the WHERE clause, ALL records will be updated:
+
+===================================================== ORDER BY =====================================================
+
+SELECT ... FROM < table_name > ORDER BY < column name >;            # Ascending order
+SELECT ... FROM < table_name > ORDER BY < column name > DESC;       # Descending order
+
+===================================================== GROUP BY & HAVING =====================================================
+
+# The GROUP BY clause groups rows that have the same values into summary rows.
+# The GROUP BY clause is often used with aggregate functions like COUNT(), MAX(), MIN(), SUM(), AVG() to group the result-set by one or more columns.
+# The HAVING clause was added to SQL because the WHERE clause cannot be used with aggregate functions.
+
+SELECT address, COUNT(*) FROM employees GROUP BY address HAVING SUM(salary) < 20000;
+
+===================================================== LIMIT & OFFSET =====================================================
+
+# When you specify OFFSET 40 it means starting at record number 41.
+
+SELECT * FROM customers
+LIMIT 20 OFFSET 40; 
+
+===================================================== ALIAS =====================================================
+
+SELECT name AS first_name FROM students;
+SELECT name || ' ' || age "student age" FROM students;                          # The "" using when the alias contains one or more spaces
+SELECT std_id, age FROM students t, schools s WHERE t.std_id = s.sch_id;
+
+===================================================== LIKE & ILIKE =====================================================
+
+# The LIKE operator is case sensitive
+# The ILIKE operator is case insensitive
+# % The percent sign represents zero, one, or multiple characters
+# _ The underscore sign represents one, single character
+
+===================================================== ENUMERATION DATA TYPE =====================================================
+
+------------------ CREATE ------------------
+
+CREATE TYPE mood AS ENUM('sad', 'ok', 'happy');
+
+------------------ INSERT ------------------
+
+CREATE TABLE person (
+    name TEXT,
+    current_mood mood
+);
+
+INSERT INTO person VALUES ('Mohamed', 'sad');
+
+------------------ ALTER ------------------
+
+ALTER TYPE mood ADD VALUE IF NOT EXISTS 'very happy ' AFTER 'happy';
+ALTER TYPE mood ADD VALUE IF NOT EXISTS 'very sad ' BEFORE 'sad';
+
+------------------ RENAME TO ------------------
+
+ALTER TYPE mood RENAME TO mod;
+
+------------------ DROP TYPE ------------------
+
+DROP TYPE mod;
+
+===================================================== JOIN =====================================================
+
+------------------ INNER JOIN ------------------
+
+# The INNER JOIN keyword selects records that have matching values in both tables
+# INNER is the default join type for JOIN, so when you write JOIN the parser actually writes INNER JOIN
+
+SELECT testproduct_id, product_name, category_name
+FROM testproducts
+INNER JOIN categories ON testproducts.category_id = categories.category_id; 
+
+------------------ LEFT JOIN ------------------
+
+# The LEFT JOIN keyword selects ALL records from the "left" table, and the matching records from the "right" table. The result is 0 records from the right side if there is no match
+# LEFT JOIN and LEFT OUTER JOIN will give the same result
+
+SELECT testproduct_id, product_name, category_name
+FROM testproducts
+LEFT JOIN categories ON testproducts.category_id = categories.category_id; 
+
+------------------ RIGHT JOIN ------------------
+
+# The RIGHT JOIN keyword selects ALL records from the "right" table, and the matching records from the "left" table. The result is 0 records from the left side if there is no match
+# RIGHT JOIN and RIGHT OUTER JOIN will give the same result
+
+SELECT testproduct_id, product_name, category_name
+FROM testproducts
+RIGHT JOIN categories ON testproducts.category_id = categories.category_id; 
+
+------------------ FULL JOIN ------------------
+
+# The FULL JOIN keyword selects ALL records from both tables, even if there is not a match. For rows with a match the values from both tables are available, if there is not a match the empty fields will get the value NULL
+# FULL JOIN and FULL OUTER JOIN will give the same result
+
+SELECT testproduct_id, product_name, category_name
+FROM testproducts
+FULL JOIN categories ON testproducts.category_id = categories.category_id; 
+
+------------------ CROSS JOIN ------------------
+
+# The CROSS JOIN keyword matches ALL records from the "left" table with EACH record from the "right" table
+# That means that all records from the "right" table will be returned for each record in the "left" table
+
+SELECT testproduct_id, product_name, category_name
+FROM testproducts
+CROSS JOIN categories; 
+
+# The CROSS JOIN method will return ALL categories for EACH testproduct, meaning that it will return 80 rows (10 * 8)
+
+===================================================== INFORMATION_SCHEMA =====================================================
+
+# It allows users to query information about database objects (like tables, columns, and constraints) in a standard way, which is 
+  consistent across different SQL databases.
+
+# Common Views in information_schema:
+    tables: Contains information about tables in the database.
+    columns: Contains information about columns in tables.
+    schemata: Contains information about schemas in the database.
+    constraints: Contains information about table constraints.
+
+# Usage: You can query information_schema to get details about database objects, such as table names, column names, data types, and
+  more, without needing to know the specific database implementation details.
+
+===================================================== GET THE NUMBER OF TABLES IN A DATABASE =====================================================
+
+------------------ ACROSS A SPECEFIC SCHEMA ------------------
+
+SELECT COUNT(*) 
+FROM information_schema.tables 
+WHERE table_schema = 'schema_name';
+
+------------------ ACROSS ALL SCHEMAS ------------------
+
+SELECT COUNT(*) 
+FROM information_schema.tables 
+WHERE table_type = 'BASE TABLE';
+
+===================================================== GET THE NUMBER OF COLUMNS IN A TABLE =====================================================
+
+SELECT COUNT(*) 
+FROM information_schema.columns 
+WHERE table_schema = 'schema_name' 
+AND table_name = 'your_table_name';
+
+===================================================== OTHER INFORMATIONS =====================================================
+
+# SELECT DISTINCT
+# MIN(), MAX()
+# COUNT()
+# SUM(), AVG()
+# UNION & UNION ALL
+# EXISTS & NOT EXISTS
+# ANY
+# ALL

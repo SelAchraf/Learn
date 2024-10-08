@@ -1,0 +1,20 @@
+===================================================== Odoo Environment Structure =====================================================
+
+odoo/src => versions => each version has : - community      - venv      - entreprise
+     database   
+     etc => config files
+     project => my all projects => each project has two folders "code" and ".vscode" => the "code" folder contain all modules of the project 
+                                                                                     => the ".vscode" folder conatin two files "launch.json" and "settings.json" 
+                                                                                     => the "launch.json" file contain the debuggers 
+
+------------------ Module Structure ------------------
+
+# "models" folder => contain "__init__.py" and other py files => the "__init__.py" contain the importation of all other py files of the "models" folder
+
+# "security" folder => contain a "ir.model.access.csv" file hwo contain the access rights
+
+# "views" folder => contain the .xml files
+
+# "__init__.py" file => contain the importation of all folders who contains a py files
+
+# "__manifest__.py"

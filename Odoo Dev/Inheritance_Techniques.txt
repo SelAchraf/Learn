@@ -1,0 +1,22 @@
+===================================================== Inheritance Techniques =====================================================
+
+# When i want to inherit a model from another module i should add it on the __manifest__ file (depends)
+
+# When i want to inherit more than one model i use _inherit = ['first _model', 'second_model']
+
+------------------ Python Inheritance ------------------
+
+classes 
+overraiding
+
+------------------ Model Inheritance ------------------
+
+# Type 1 : iherit the model in a new another model with all attributes, fields, and methods (it create a new table in the database)(_inherit & _name)
+
+# Type 2 : make an enxtention of a model and add methods or fields to it and it add the columns to the existing table (it don't create a new table) (_inherit)
+
+# Type 3 : when i don't need to inherit the attributes and methods of the inheritance model (i need just to inherit the model fields)
+
+------------------ View Inheritance ------------------
+
+# Template view (extention, replace, add, modify, custom)

@@ -1,0 +1,12 @@
+===================================================== Search Domain =====================================================
+
+# The list contain tuples and logical operators
+
+# Each tuple contain 3 items
+
+# The logical operators are : (or => |), (and => &), (not => !) 
+
+# Syntax : 
+
+def function_name(self):
+     variable_name = self.search(['logical_opeators', ('field_name', 'operators', 'value'), ('field_name', 'operators', 'value')])

@@ -1,0 +1,352 @@
+===================================================== Incoming and outgoing shipments in 3 steps (video 2) =====================================================
+
+1 => Configuration -> Warehouses -> select the warehouse -> enable Receive goods in input, then quality and then stock (3 steps)
+                                                         -> enable Pack goods, send goods in output and then deliver (3 steps)
+                                                       
+2 => Purchase a product to the selected warehouse to test the 3 steps Incoming Shipments option
+
+3 => Sale a product from the selected warehouse to test the 3 steps Outgoing Shipments option
+
+===================================================== Working with Perishable Products | Removal Strategy : FEFO (video 3) =====================================================
+
+# FEFO = first expired first out
+
+1 => Configuration -> Settings -> Traceability -> enable Expiration Dates
+                                               -> enable Lots & Serial Numbers
+
+2 => Products -> select the perishable product -> Inventory -> enable Tracking By Lots
+                                                            -> enable Expiration Date
+                                                            -> manage DATES
+
+3 => Configuration -> Operations Types -> select the needed operation type for the needed warhouse & company -> enable Use Existing ones for Lots/Serial 
+                                                                                                                Numbers
+
+4 => Configuration -> Location -> select the stock location of the perishable product -> select First Expiry First Out (FEFO) for Removal Strategy
+  Or
+  => Products -> select the perishable product -> General Information -> Product Category -> Internal link -> select First Expiry First Out (FEFO) for 
+                                                                                                              Force Removal Strategy
+
+5 => Products -> Lots/Serial Numbers -> create a new lot with an expiration date for the perishable product -> purchase the product with the created lot
+  Or 
+  => Create the lot during the purchase action and it use the product expiration date ex: 60 days after receipt
+
+===================================================== Automatic Batch Transfer (video 6) =====================================================
+
+1 => Configuration -> Settings -> Operations -> enable Batch Transfers
+
+2 => Configuration -> Operations Types -> select the Delivery Orders option for the needed warhouse & company -> enable Automatic Batches 
+                                                                                                              -> manage Batch Transfers
+
+3 => Make a several sale actions without deliver them
+
+4 => Inventory -> Operations -> Batch Transfers -> validate the batch transfer
+
+===================================================== How to Manage Consignment (video 8) =====================================================
+
+# In this Strategy the consigner give products to the consignee, when the consignee sale this products the owner (consigner) take a percentage
+  from the sales profits and also he can reseive the unsoled products
+
+1 => Configuration -> Settings -> Traceability -> enable Consignment
+
+===================================================== Cross docking (video 9) =====================================================
+
+# After we enable this option on a product, when a customer make an order for this product even if the product quantity is available, we don't sale his 
+  it directly from the stock but rather we purchase this product and then we sale it to the customer without stock it  
+
+1 => Configuration -> Warehouses -> select the warehouse -> SHIPMENTS -> enable Receive goods in input and then stock (2 steps)
+                                                                      -> enable Send goods in output and then deliver (2 steps)
+
+2 => Configuration -> Routes -> select the Cross-Dock option for the specefic warehouse
+
+3 => Products -> Select the product -> Inventory -> OPERATIONS -> Routes -> enable <warehouse_name>: Cross-Dock
+
+4 => Go to the Sales module -> sale the selected product
+
+===================================================== How to manage buy to resupply (video 10) =====================================================
+
+1 => Configuration -> Routes -> Filters -> Archived -> select Replenish on Order (MTO) -> Actions -> Unarchive
+
+2 => Configuration -> Warehouses -> enable Buy to Resupply for each warehouse
+                                 -> select the Resupply From for each warehouse
+                                 -> Routes -> we find a Supply Product route and when we enter to it we find 2 rules
+                                                -> the first rule is for deliver the product from the resupply warehouse if it not exist in the current 
+                                                warehouse
+                                                -> the second rule is for take the product from the current warehouse if it available else it check if 
+                                                the product is available in the resupply warehouse
+
+===================================================== Removal Strategy : LIFO (video 12) =====================================================
+
+# LIFO = last in first out
+
+1 => Configuration -> Settings -> Traceability -> enable Lots & Serial Numbers
+
+2 => Configuration -> Operations Types -> select the needed operation type for the needed warhouse & company -> enable Use Existing ones for Lots/Serial 
+                                                                                                                Numbers
+
+3 => Configuration -> Location -> select the stock location of the product -> select Last In First Out (LIFO) for Removal Strategy
+  Or
+  => Products -> select the product -> General Information -> Product Category -> Internal link -> select Last In First Out (LIFO) for Force Removal 
+                                                                                                   Strategy
+
+4 => Products -> select a product -> Inventory -> enable Tracking By Lots 
+
+===================================================== How to Manage Closest Location (video 14) =====================================================
+
+1 => Configuration -> Locations -> create shelfs -> select Closest Location for Removal Strategy on all shelfs locations
+
+2 => Update the shelfs on hand quantity 
+
+3 => Make an sale operation to test the removal strategy
+
+===================================================== Automatic Reordering Rule (video 16) =====================================================
+
+1 => Products -> select a product -> Reordering Rules -> create a new reording rule with a min & max quantity and select Auto for Trigger
+
+# When the On Hand quantity of the product is less then the min quantity it make an auto purchase operation (we must confirm it from the purchase module)
+  to increase the on hand quantity and make it equal to the max quantity
+
+===================================================== How to Manually Reorder the Product (video 17) =====================================================
+
+1 => Products -> select a product -> Reordering Rules -> create a new reording rule with a min & max quantity and select Manual for Trigger
+
+# When the On Hand quantity of the product is less then the min quantity it make an manual purchase operation to increase the on hand quantity and make it 
+  equal to the max quantity
+
+# To confirm the order we can do it from :
+    Operations -> Replenishment -> select the replenishment order -> Order Once -> confirm the purchase operation from the purchase module
+  Or 
+    Products -> select the specefic product -> Reordering Rules -> Order Once -> confirm the purchase operation from the purchase module
+
+# If the product where we make a manual reording rule for it have a Replenish on Order (MTO) route so it make the reording rule auto not manual
+   
+===================================================== Removal strategy : FIFO (video 18) =====================================================
+
+# FIFO = first in first out
+
+1 => Configuration -> Settings -> Traceability -> enable Lots & Serial Numbers      
+
+2 => Products -> select a product -> Inventory -> enable Tracking By Lots 
+
+3 => Configuration -> Location -> select the stock location of the product -> select First In First Out (FIFO) for Removal Strategy
+  Or
+  => Products -> select the product -> General Information -> Product Category -> Internal link -> select First In First Out (FIFO) for Force Removal 
+                                                                                                   Strategy
+
+===================================================== What is MTO? | Make-To-Order (video 19) =====================================================
+
+1 => Unarchive the Replenish on Order (MTO) route 
+
+2 => Products -> select a product who we can manufacturing it -> Inventory -> Operations -> enable Replenish on Order (MTO) for Routes
+                                                                                         -> enable Manufacture for Routes 
+
+3 => When we make a sale operation for this product and the quantity is unavailable it make a manufacturing operation for this product and we can manage 
+     it from the manufacturing module 
+
+# Ida drna mto l we7d mn les produits a m3eh buy w jena order l hadak l produit mais la quantity li f stock ma tkfich donc tsra operation te3 purchase bl 
+  quantity li fl order mch li rahi na9sa a nlgaha direct fl purchase module beh nconfrmiha 
+
+# Ida drna mto l we7d mn les produits a m3eh manufacturing w jena order l hadak l produit mais la quantity li f stock ma tkfich donc tsra operation te3 
+  manufacturing bl quantity li fl order mch li rahi na9sa a nlgaha direct fl manufacturing module beh nconfrmiha 
+
+===================================================== Costing methods (video 20) =====================================================
+
+1 => Configuration -> Product Categories -> select the product Category -> select a Costing Method
+
+2 => Enable the developer mode to can see the Valuation after the purchase operation
+
+-------------------------- Standard Price -------------------------- 
+
+1 => Products -> select a product -> General Information -> select a price for the Cost
+
+# Kima nchriw quantity mn hada le produit meme lakan fl operation te3 purchase modifina la valeur te3 cost ki nro7o nchoufou el valuation be3d ma nconfrmi 
+  l'operation te3 delivery nlgewha bli t7sbt bl valeur li rana 7atinha fl cost te3 hadak el produit mch b la valeur li 7atinaha fl purchase operation
+
+-------------------------- Average Cost (AVCO) --------------------------
+
+# Kima nchriw gdeh mn quantity mn el produit hada w koul quantity nchriwha b prix different 7a ttbdl la valeur te3 cost te3 hada le produit 7a 7seb total 
+  prix te3 li quantities li chrinehoum / total quantity li chrinaha w ki nro7o ll on hand te3 el produit hada 7a nlgew bli Value hia cost * On Hand Quantity
+
+-------------------------- First In First Out (FIFO) --------------------------
+
+# This method is used with the perishable products
+
+# Kima nchriw gdeh mn quantity mn el produit hada w koul quantity nchriwha b prix different w mb3ed ndirou sale operation l hada el produit 7a ibda ihez mn 
+  a9dm quantity chrinaha w 7a ttbdl la valeur te3 el cost 3a 7seb el prix li chrina bih akher quantity bi3na mnha w ida kent sale order thez mn aktr mn 
+  quantity different mn jihet el prix li chrinaha bih iro7 ijm3 les prix li chrina bihoum les quantities edoum w i9asmhom 3a le nombre te3 mn gdeh quantity 
+  hezina w li ikhrj houwa el cost te3 hada el produit
+
+===================================================== Least Packages Removal Strategy (video 21) =====================================================
+
+1 => Configuration -> Settings -> Operations -> enable Packages
+
+2 => Configuration -> Location -> select the stock location of the product -> select Least Packages for Removal Strategy
+  Or
+  => Products -> select the product -> General Information -> Product Category -> Internal link -> select Least Packages for Force Removal 
+                                                                                                   Strategy                                                                                                  
+
+===================================================== How to Use Serial Numbers to Track Products (video 22) =====================================================
+
+1 => Configuration -> Settings -> Traceability -> enable Lots & Serial Numbers
+
+2 => Products -> Lots/Serial Numbers -> view the list of all serial numbers and lots of products 
+
+3 => Configuration -> Operations Types -> manage Lots/Serial Numbers for the needed operations of the warehouse
+
+4 => Products -> select the product -> Inventory -> Traceability -> enable By Unique Serial Number -> More -> Lots/Serial Numbers -> create a new SN
+
+5 => Make a purchase operation for this product to test this strategy
+
+===================================================== How to Manage Package Reservation Methods (video 25) =====================================================
+
+1 => Configuration -> Settings -> enable Product Packagings for the sales & purchase & inventory modules 
+
+2 => Products -> select a product -> Inventory -> add a line for Packaging
+
+-------------------------- Reserve Only Full Packagings --------------------------
+
+1 => Configuration -> Product Categories -> select the Category of the product -> enable Reserve Only Full Packagings for Reserve Packagings
+
+# Ki ndirou sale order l hadak l produit b quantity aktr mn li keina f stock aia itrizerva hadak l produit 3a chekl des pack w lezm ikounou kaml m3amrin 
+  3a 7seb la ligne li drnaha fl Packaging te3 hadak le produit w li ib9a iro7 fi backorder ida 7eb idirha
+
+-------------------------- Reserve Partial Packagings --------------------------
+
+1 => Configuration -> Product Categories -> select the Category of the product -> enable Reserve Partial Packagings for Reserve Packagings
+
+# Ki ndirou sale order l hadak l produit b quantity aktr mn li keina f stock aia itrizerva hadak l produit b la quantity li keina f stock w mthmouch ida 
+  la quantity edika tkewn 3adad gedged mn les pack wla la w li ib9a iro7 fi backorder ida 7eb idirha
+
+===================================================== How to Manage Putaway Rule (video 29) =====================================================
+
+1 => Configuration -> Settings -> Warehouse -> enable Storage Categories
+
+2 => Configuration -> Storage Categories -> create a Storage Category
+
+3 => Configuration -> Locations -> create a new location for the Storage Category
+
+4 => Configuration -> Putaways Rules -> create a putaway rule for the product
+
+5 => Make a purchase operation to test this strategy 
+
+# Ki tcrii Storage Category t9dr tconfiguri gdeh le max te3 koul produit li i9dr ikoun f hada storage 
+
+# Kein 3 methode fl Allow New Product dekhl el configuration Storage Category :
+
+    # If the location is empty => lezm Storage ada ikoun fergh beh iwli iaccepti des quantities mn el purchase
+
+    # If all products are same => lezm el produit li 7a nchriwh ikoun nefsou le produit li raho f storage 
+
+    # Allow mixed products => t9dr t7at produit different 3a li kein f storage sans probleme 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================== How to Manage Reception Report (video 4) =====================================================
+
+1 => Configuration -> Settings -> Operations -> enable Reception Report (beh n9dro ndirou assign)
+
+2 => Make a sale action
+
+3 => When we receive an order for an insufficient quantity of a specefic product it create a replenishment order
+
+4 => Operations -> Replenishment -> order once 
+
+5 => Make the purchase action for the replenishment order
+
+6 => After validate the receiption of the replenishment order we go to Allocation -> Assign All 
+
+7 => Sales -> deliver the order to the customer
+
+===================================================== Picking Policies and Shipping Policies (video 7) =====================================================
+
+-------------------------- Ship all products at once -------------------------- 
+
+1 => Configuration -> Settings -> select Ship all products at once for Picking Policy
+
+2 => When we receive an order for an insufficient quantity of a specefic product the state of sale action still on waiting for availability and we can 
+     just deliver the available quantity of this product with the possibility of create a backorder
+
+-------------------------- Ship products as soon as available, with back orders -------------------------- 
+
+1 => Configuration -> Settings -> select Ship products as soon as available, with back orders for Picking Policy
+
+2 => When we receive an order for an insufficient quantity of a specefic product the state of sale action is ready and we can deliver just the available 
+     quantity of this product with the possibility of create a backorder
+
+===================================================== How to Configure Wave Transfer (video 13) =====================================================
+
+# We can add only the transfers from the same operation hwo have the state (Ready) to a wave transfers
+
+# View the list of wave transfers => Operations -> Wave Transfers 
+
+1 => Configuration -> Settings -> Operations -> enable Batch Transfers 
+                                             -> enable Wave Transfers
+               
+2 => Overview -> 3 points of a specific operation (Receipts or Deliveries or Internal) -> operations 
+  Or 
+  => Operations -> select an operation (Receipts or Deliveries or Internal)
+
+3 => Select the transfers -> Actions -> Add to wave -> Confirm -> select the transfers -> Add to wave
+
+4 => Select transfers from two or more different waves transfers -> Actions -> Add to batch 
+
+===================================================== How to Setup Warehouse & Location (video 15) =====================================================
+
+# The internal locations are colored by red color
+
+# The view locations are colored by blue color
+
+# The rest of locations are colored by black color 
+
+# Customer location => is the location where the product sold can be viewed and the products are no longer available in the stock 
+
+# Production location => this location is used when we are performing the manufacturing 
+
+# Inventory Loss location => it used for the damaged products
+  twli treservi bla assign cture of the stock location and it should not directly contain the product
+                   it receive docs like the area in the warehouse where the truck delivered the goods 
+
+1 => Configuration -> Settings -> Warehouse -> enable Storage Locations
+
+2 => Configuration -> Locations -> remove the Internal filter -> show all locations
+
+===================================================== Cluster Picking (video 24) =====================================================
+
+1 => Configuration -> Settings -> Operations -> enable Packages
+
+2 => Configuration -> Settings -> Operations -> enable Batch Transfer
+
+3 => Configuration -> Settings -> Warehouse -> enable Storage Locations
+                                            -> enable Multi-Step Routes
+
+4 => Configuration -> Locations -> create shelfs locations -> make for each shelf a specefic product with a specefic quantity
+
+5 => Products -> Packages -> create cluster packs -> select Reusable Box for Package Use for each one 
+
+6 => Configuration -> Warehouses -> select the warhouse -> select Receive goods directly (1 step) for Incoming Shipments
+                                                        -> select Send goods in output and then deliver (2 steps) for Outgoing Shipments
+
+7 => Make a sale orders without confirm the pick actions
+
+8 => Inventory -> batch the pick actions 
+
+9 => Operations -> Batch Transfers -> select the batch -> select the Destination for each line of the batch 
+
+10 => Sales -> deliver all sale orders 

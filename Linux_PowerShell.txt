@@ -1,0 +1,198 @@
+=================================== Get the full path of the current working directory ===================================
+
+pwd
+
+=================================== List all files and directories in the current directory ===================================
+
+List all files in your current directory => ls 
+
+-a => Show all files, including hidden files
+-l => Long listing format
+-h => Human-readable sizes (works with -l)
+-t => Sort by modification time
+-r => Reverse the order of the sort
+-S => Sort by file size
+
+ll = ls -la
+
+=================================== How to change directory ===================================
+
+Change directory to the root => cd / 
+Change directoryto the home => cd
+Change directory by jump back one directory => cd ..
+Change directory to a specific path => cd /path 
+
+=================================== Create files ===================================
+
+Create file => touch file_name 
+Create more than one file => touch first_file second_file 
+Create more than one file with the same suffix => touch file{1..10}
+Create a file with a future date => touch -d tomorrow file_name
+
+=================================== Edit files ===================================
+
+Add stuff to a new or existing file => echo "stuff" > file_name
+Edit a file => nano file_name                   			        # when i finish editing i click on "ctrl + x" and "y" and "enter" to save
+Edit a file like a pro => vim file_name         			        # after that i must click on "i" to start inserting text and when i finish i click on "esq" and ":" and "w" and "q" to 
+                                                                      write and quit 
+
+=================================== See the file content ===================================
+
+See what's inside a file => cat file_name
+Read a file with a one page at a time => less file_name
+See the beginning of a file => head file_name 
+See the end of a file => tail file_name
+
+=================================== Create a new directory  ===================================
+
+mkdir directory_name
+
+=================================== Copy a file or directory ===================================
+
+cp file_name destination_path
+cp -p source destination
+cp -R source_dir destination_dir
+
+=================================== Move or rename a file or directory ===================================
+
+mv file_name destination_path
+
+=================================== Delete a file or directory ===================================
+
+Remove a file => rm file_name 
+Remove a file after confirmation => rm -i filename
+Remove an empty directory => rmdir directory_name
+Remove an not empty directo => rm -R directory_name
+
+=================================== Show the current user ===================================
+
+whoami
+
+=================================== Create a new user ===================================
+
+Create just a new user => sudo useradd user_name
+Create a new user with some parameters like password => sudo adduser user_name 
+
+=================================== Switch to another user ===================================
+
+Switch the current user => su user_name 
+
+=================================== Change or add a password to the current user ===================================
+
+passwd
+
+=================================== Show the manual or the role of a specific command ===================================
+
+man command_name
+whatis command_name
+
+=================================== Compare two files ===================================
+
+cmp first_file second_file
+diff first_file second_file
+
+=================================== Manipulate the file or the directory permissions ===================================
+
+chmod <options> file_name				
+chmod -R <options> dir_name
+
+The options is consists of :
+
+    1- Categories of users :                    2- (+) to add permissions or (-) to delete permissions                          3- Types of actions:
+        Owner (u)                                                                                                                 Read (r)
+        Group (g)                                                                                                                 Write (w)
+        Others (o)                                                                                                                Execute (x)
+        All (a)
+
+The first character of the permissions code refers to if it is a directory (d) or a file (-)
+
+The first three characters after the first character refers to the user's permissions
+
+The second three characters after the first character refers to the group's permissions
+        
+The third three characters after the first character refers to the other's permissions
+
+We can Manipulate permissions using a decimale number contains three bite
+        
+
+=================================== Change the ownership of a file ===================================
+
+chown user_name file_name
+
+=================================== Show the ip address ===================================
+
+Show the ip address => ifconfig
+Show the ip address better => ip address
+Show the ip address for one interface => ip address | grep eth0
+ 
+=================================== Display informations about running processes =================================== 
+
+See the static snapshot of all running processes => ps -aux
+
+Detailed Output:
+    User: The user who owns the process
+    PID: The process ID
+    %CPU: The percentage of CPU usage
+    %MEM: The percentage of memory usage
+    VSZ: Virtual memory size
+    RSS: Resident Set Size (physical memory usage)
+    TTY: The terminal associated with the process
+    STAT: The process state (e.g., running, sleeping)
+    START: Time when the process started
+    TIME: Cumulative CPU time
+    COMMAND: The command that started the process
+
+Non-Interactive: 
+    The output is not interactive. You cannot sort, filter, or interact with the data beyond what the command provides unless you pipe it to other commands like grep, sort, or less
+
+--------------------------------------------------------------------------------------
+
+See the real-time snapshot of all running processes => top
+
+At the top of the top display, you also see a summary of the system’s overall performance, including:
+    Load Average: The average system load over the last 1, 5, and 15 minutes
+    Tasks: The total number of processes and their states (running, sleeping, etc.)
+    CPU Usage: A breakdown of CPU usage between user processes, system processes, idle time, etc
+    Memory Usage: Information on total, used, and free memory and swap space
+
+Detailed Output:
+    PID: Process ID, a unique identifier for each process
+    USER: The user who owns the process
+    PR: Priority of the process
+    NI: Nice value, which affects the priority
+    VIRT: Virtual memory size used by the process
+    RES: Resident memory size (physical memory) used by the process
+    SHR: Shared memory size
+    S: Process state:
+        R: Running
+        S: Sleeping
+        D: Uninterruptible sleep
+        Z: Zombie
+        T: Stopped or traced
+    %CPU: Percentage of CPU time used by the process
+    %MEM: Percentage of memory used by the process
+    TIME+: Total CPU time the process has used since it started
+    COMMAND: The command that started the process
+
+Interactive: 
+    While it’s running, you can press keys to sort processes by different criteria (e.g., by CPU usage, memory usage), kill processes, or change the refresh rate
+
+--------------------------------------------------------------------------------------
+
+See the real-time snapshot of all running processes with a prettier way => htop
+
+=================================== How to stop a process ===================================
+
+kill -9 process_id                # the process id can i find it using ps -aux | grep process_name    # 9 it to forcing kill it 
+pkill -f process_name
+###############################################################################################################################################################################
+
+=================================== How to start, restart, stop and see the status of services ===================================
+
+sudo systemctl start service_name
+sudo systemctl restart service_name
+sudo systemctl stop service_name
+sudo systemctl status service_name
+
+################################################################################################################################# how to install, update, uninstall packages 
+########################################################################################################################################################### find and grep

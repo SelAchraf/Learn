@@ -1,0 +1,16 @@
+===================================================== Smart Buttons =====================================================
+
+# Add the button to the form view inside the sheet :
+
+<div name="button_box" class="oe_button_box">
+     <button name="action_name" type="object" icon="icon_name" string="button_string" invisible="condition"/>
+</div>
+
+# Add the action to the py file of the model :
+
+def action_name(self):
+     action = self.env['ir.actions.actions']._for_xml_id('module_name.destination_act_window_action_id')
+     view_id = self.env.ref('module_name.from_id').id
+     action['res_id'] = self.field_name.id
+     action['views'] = [[view_id, 'form']]
+     return action

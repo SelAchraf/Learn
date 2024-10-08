@@ -1,0 +1,19 @@
+===================================================== DateTime​ =====================================================
+
+------------------ Get the current datetime ------------------
+
+# Syntax : first_field_name = fields.Datetime(default=fields.Datetime.now())
+
+------------------ Add hours to the current datetime ------------------
+
+# Syntax : 
+
+second_field_name = fields.Datetime(compute='_compute_second_field_name')
+
+@api.depends('first_field_name')
+    def _compute_second_field_name(self):    
+        for rec in self: 
+            if rec.first_field_name:
+                rec.second_field_name = rec.first_field_name + timedelta(hours=6)
+            else:
+                rec.second_field_name = False

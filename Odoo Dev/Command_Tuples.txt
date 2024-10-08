@@ -1,0 +1,11 @@
+===================================================== Command Tuples =====================================================
+
+# It used with the relational fields
+
+# Syntax : 'relational_field_name': [(0, 0, {'field_name': line.field_name}) for line in rec.relational_field_name]
+
+# First 0 => create
+
+# Second 0 => create an unexisting record 
+
+# The dectionary contains the fields with its values 

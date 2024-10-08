@@ -1,0 +1,14 @@
+===================================================== Tree View =====================================================
+
+<record id="record_id" model="ir.ui.view">
+     <field name="name">record_name</field>
+     <field name="model">model_name</field>
+     <field name="arch" type="xml">
+          <tree>
+               <field name="field_name" string="field_string"></field>
+               <field name="field_name" string="field_string" optional="1"></field>
+          </tree>
+     </field>
+</record>
+
+# If we don't create a tree view for a specific model it create a default tree with one field (name)

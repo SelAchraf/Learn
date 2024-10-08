@@ -1,0 +1,34 @@
+===================================================== Add Sequences =====================================================
+
+------------------ Syntax ------------------
+
+ref = fields.Char(default='value', readonly=True)
+
+------------------ Overraiding the create function to increment the ref value ------------------
+
+@api.model
+def create(self, vals):
+     res = super(class_name, self).create(vals)
+     if res.ref == 'default_value':
+          res.ref = self.env['ir.sequence'].next_by_code('code_name')
+     return res
+
+------------------ Sequence record syntax ------------------
+
+# We add the sequence records in the "data/sequence.xml" file
+
+<data>
+     <record id="record_id" model="ir.sequence">
+          <field name="name">record_name</field>
+          <field name="code">code_name</field>
+          <field name="prefix">value</field>
+          <field name="padding">value</field>
+     </record>
+</data>
+
+------------------ Add the ref field to the form view ------------------
+
+<label for='ref'/>
+<h1>
+     <field name="ref"></field>
+</h1>
