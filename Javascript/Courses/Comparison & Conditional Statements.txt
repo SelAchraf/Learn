@@ -1,0 +1,46 @@
+===================================================== Comparison =====================================================
+
+# We can compare values using == , != , < , > , <= , >=
+
+# To compare values and datatypes in the same time we use ===
+
+# We can make a multiple comparison using && or ||
+
+===================================================== If & Else =====================================================
+
+-------------------------- First Syntax --------------------------
+
+if (condition){
+  code;
+}                      
+else if (condition){
+  code;
+}                     
+else{
+  code;
+}                                  
+
+-------------------------- Second Syntax --------------------------
+
+condition?
+  code;
+  :condition?
+    code
+    : code
+                                       
+# If we use the second syntax of if and else conditions we can stock this conditions in a variable 
+
+===================================================== Switch =====================================================
+
+switch (var){
+  case 'value' :
+    code;
+    break;
+  case 'value' :
+    code;
+    break;
+  default :
+    code;
+}
+
+# We can use switch with only the equal conditions

@@ -1,0 +1,33 @@
+# []
+
+# We can create a list with different data types 
+
+# We can change an element from the list
+
+1 => .lenght                            # get the list lenght
+
+2 => .push()                            # add an element to the last of the list 
+
+3 => .unshift()                         # add an element to the begenning of the list 
+
+4 => .shift()                           # remove the first item from the list and stock it 
+
+5 => .pop()                             # remove the last item from the list and stock it 
+
+6 => .splice(start, count, add)         # remove form the list and we can use it to add elements to the list 
+
+7 => .slice(start, end)                 # get ele,elements from the list
+
+8 => .indexOf()                         # it return -1 if the element doesn't exist
+
+9 => .lastIndexOf()                     # it return -1 if the element doesn't exist     
+
+10 => .includes()                       # it return true or false
+
+11 => .reverse()
+
+12 => .sort()
+
+13 => .join('separetor')
+
+14 => .concat()

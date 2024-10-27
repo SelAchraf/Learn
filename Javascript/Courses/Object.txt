@@ -1,0 +1,75 @@
+===================================================== Syntax =====================================================
+
+let user = {
+  // properties
+  name : 'value',
+  age : 'value',
+  skills : ['value', 'value', 'value'],
+  phoneNumber : {
+    first : 'value',
+    second : 'value',
+  }
+
+  // methods
+  getAge : function(){
+    if (user.age >= 18) {
+      return 'available';
+    }
+    else {
+      return 'unavailable';
+    }
+  }
+}
+
+console.log(user.phoneNumber.first)
+console.log(user['phoneNumber']['first'])
+console.log(user.getAge())
+console.log(user['getAge']())
+
+===================================================== Create An Object =====================================================
+
+# I can create an empty object using one of this syntaxes :
+
+let user = {};
+let user = new Object();          
+let user = new String();          # For string object
+let user = new String();          # For number object
+let user = new Boolean();         # For boolean object
+
+# I can add a new property to an existing object using one of this syntaxes :
+
+user.name = 'value';
+user['name'] = 'value';
+
+# If the property exist so the two last instructions modify its value 
+
+# I can create an object with properties in the same time using this syntax :
+
+let user = new Object({
+  name : 'value';
+});          
+
+===================================================== This keyword =====================================================
+
+# This keyword refers to the object to which it belongs
+
+===================================================== Object.create() =====================================================
+
+# I can create a new object with all content of another object using this syntax :
+
+let user2 = Object.create(user1);
+
+# I can create a new object with all content of another object but with modify the properties value of this object or with adding a new 
+  properties using this syntax :
+
+let user2 = Object.create(user1, {
+  age : {value:20},
+});
+
+===================================================== Object.assign() =====================================================
+
+# I can crete a new object with the content of more than one object and with a new properties using this syntax :
+
+let a4 = Object.assign(a1, a2, a3, {
+  num4 : value,
+});

@@ -1,0 +1,180 @@
+===================================================== Sellect Elements =====================================================
+
+1 => document.getElementById('#value')
+
+2 => document.getElementsByClassName('.value')
+
+3 => document.getElementsByTagName('value')
+
+4 => document.querySelector('')                     # I use . for ClassName or # for Id or nothing for TagName and it select only the first one
+
+5 => document.querySelectorAll('')                  # It is like document.querySelector('') but it select all not only the first one
+
+6 => document.body
+
+7 => document.title
+
+8 => document.images
+
+9 => document.links
+
+10 => document.forms
+
+===================================================== Attribute =====================================================
+
+1 => element.hasAttributes()                                            # return true or false
+
+2 => element.hasAttribute('attribute_name')                             # return true or false
+
+3 => element.attributes                                                 # return an array contain all attributes of the element
+
+4 => element.setAttribute('attribute_name', 'attribute_value')          # add or modify the value of an attribute of a specefic ellement
+
+5 => element.removeAttribute('attribute_name')                          # remove an attriute from a specefic ellement 
+
+===================================================== Inner & Outer =====================================================
+
+1 => element.outerHTML                      # return the element and its content
+
+2 => element.innerHTML                      # return only the content of the element
+
+3 => element.innerText = '<p>hello</p>'     # It replace the content of the element with <p>hello</p> considering it like a text
+
+4 => element.outerText = '<p>hello</p>'     # It replace the element and its content with <p>hello</p> considering it like a text
+
+5 => element.innerHTML = '<p>hello</p>'     # It replace the content of the element with <p>hello</p> considering it like a tag
+
+6 => element.outerHTML = '<p>hello</p>'     # It replace the element and its content with <p>hello</p> considering it like a tag
+
+===================================================== Sibling & Parent =====================================================
+
+1 => element.previousElementSibling     # return the element situate before element 
+
+2 => element.nextElementSibling         # return the element situate after element 
+
+3 => element.previousSibling            # return the comment or text situated before element 
+
+4 => element.nextSibling                # return the comment or text situated after element
+
+5 => element.parentElement              # return the parent of the element 
+
+===================================================== DOM Css Style =====================================================
+
+1 => element.style.property_name = 'value'
+
+# We don't use - when the property_name contain more than one word but we capitalize the second word
+
+2 => element.style.cssText = `
+        backgroun-color : red;
+        color : blue;
+     `
+
+# The cssText remove all styles before it 
+
+3 => element.style.removeProperty('property_name');
+
+4 => element.style.setProperty('property_name', 'value', 'important');
+
+===================================================== Create Elements =====================================================
+
+1 => Create elements
+
+let container = document.createElement(‘div’); 
+let head = document.createElement(‘h1’); 
+let img = document.createElement(‘img’); 
+
+2 => Add content
+
+let content = document.createTextNode(‘hello world’); 
+head.appendChild(content); 
+img.src = ‘img/1.jpg’; 
+
+3 => Add the elements in the desired location
+
+container.appendChild(head); 
+container.appendChild(img); 
+document.body.appendChild(container);  
+
+===================================================== Events =====================================================
+
+-------------------------- Where I Write The Event --------------------------
+
+1 => In the element (HTML code) : 
+
+    <button event_name="function_name_or_code"></button>
+
+2 => In the JS code :
+
+--------------------------
+
+    element.event_name = function_name_without_parentheses;
+
+--------------------------
+
+    element.addEventListener('the_event_name_without_on', function_name_without_parentheses);
+
+--------------------------
+
+    # When i use more than one element.event_name for the same element with a different functions it aplly only the last one 
+    
+    # WHen i use more than one element.addEventListener('the_event_name_without_on', function_name_without_parentheses) for the same element with a different 
+    functions it apply all of them
+
+-------------------------- Mouse Events --------------------------
+
+1 => element.onclick          # it work when i click on the element provided that i raise the click in the same element
+
+2 => element.onmouseup        # it work when i raise the click in the element no matter what element i click on it
+
+3 => element.onmousedown      # it work when i click on the element no matter what element i raise the click on it
+
+4 => element.onmouseover      # it work when the cursor enter into the element
+
+5 => element.onmouseout       # it work when the cursor comes out of the element
+
+6 => element.onmousemove      # it work as the cursor moves inside the element
+
+7 => element.oncontextmenu    # it work when i click using the right click of the mouse
+
+-------------------------- Keyboard Events --------------------------
+
+1 => element.onkeyup           # it work when i raise the keyboard click
+
+2 => element.onkeydown         # it work when i click on the keyboard (if i don't raise the keyboard click it stay work)
+
+-------------------------- Form Events --------------------------
+
+1 => element.onfocus          # it work when i focus on the element
+
+2 => element.onblur           # it work when i leave the element
+
+-------------------------- Window Events --------------------------
+
+1 => window.onload            # it work when the page loaded (i can use just onload)
+
+2 => window.resize            # it work when i cahnge the size of the window
+
+===================================================== After / Before / Append =====================================================
+
+1 => element_one.after(element_two)         # it make the element_two after the element_one
+
+2 => element_one.before(element_two)        # it make the element_two before the element_one
+
+3 => element_one.append(element_two)        # it make the element_two inside the element_one
+
+===================================================== Add / Remove / Toggle Class =====================================================
+
+1 => element.classList.add("class_name")        # it add a class to the element
+
+2 => element.classList.remove("class_name")     # it remove a class from the element 
+
+3 => element.classList.toggle("class_name")     # if the class exist on the element it remove it else it add it
+
+===================================================== Auto Event =====================================================
+
+window.onload = function(){
+    btn.click();
+    input_one.focus();
+    input_one.value = 'test';
+    input_two.blur();
+}

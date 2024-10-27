@@ -1,0 +1,35 @@
+1 => document.write(“hello world”)
+
+2 => console.log(“hello world”)
+
+3 => console.error(“hello world”)
+
+4 => window.alert(“hello world”)
+
+5 => window.prompt('prompt_text')
+
+6 => window.print(“hello world”)
+
+# We can find the error using the consol
+
+===================================================== Primitive Data Types =====================================================
+
+1 => String    2 => Number      3 => Boolean     4 => Null      5 => Undefined
+
+# We can know the type using typeof
+
+===================================================== Variables =====================================================
+
+1 => var       2 => let       3 => const
+
+# We can declare a variable without a value when we use var or let 
+
+# We must add the variable value when we using const and we can't change the value of a const variable
+
+# We can't declare the same variable more than once when we use let but we can do it using var
+
+===================================================== Concatenation =====================================================
+
+1 => console.log('my name is ' + name + ' ' + 'and my age is ' + age)          # first methode
+
+2 => console.log(`my name is ${name} and my age is ${age}`)                    # second methode

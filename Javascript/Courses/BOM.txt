@@ -1,0 +1,119 @@
+===================================================== Scroll =====================================================
+
+1 => window.scroll({                                    # it change the scroll position to left value and top value with a smooth transition
+    left:value,
+    top:value,
+    behavior:"smooth"
+})
+
+2 => window.scroll.(x_value,y_value)                    # it change the scroll position to x_value and y_value
+
+3 => window.scrollTo(x_value,y_value)                   # it change the scroll position to x_value and y_value
+
+4 => window.scrollBy(x_value,y_value)                   # it increment the scroll position with x_value and y_value
+
+5 => window.scrollY                                     # it return the y position of the scroll 
+
+6 => window.scrollX                                     # it return the x position of the scroll                    
+
+===================================================== Screen =====================================================
+
+1 => window.screen.width
+
+2 => window.screen.height
+
+3 => window.screen.availWidth
+
+4 => window.screen.availHeight
+
+5 => window.screen.orientation.type
+
+===================================================== Location Object =====================================================
+
+-------------------------- URL --------------------------
+
+# https://www.instagram.com/achraf/ => href
+
+# https: => protocol
+
+# www.instagram.com => host name
+
+# /achraf/ => path name
+
+---------------------------------------------------------
+
+1 => window.location.href
+
+2 => window.location.protocol
+
+3 => window.location.host
+
+4 => window.location.hostname
+
+5 => window.location.pathname
+
+6 => window.location.port
+
+7 => window.location.reload()
+
+8 => window.location.assign('URL')                  # it take you to the url page with the posibility of returning to the previous page while keeping the date 
+                                                    of the previous page
+
+9 => window.location.replace('URL')                 # it take you to the url page but you can't return to the previous page
+
+---------------------------------------------------------
+
+1 => window.history.back()
+
+2 => window.history.forward()
+
+===================================================== SetTimeOut & SetInterval =====================================================
+
+1 => setTimeout(function({code}),time_on_ms)            # it run the function only for one time after time_on_ms
+
+2 => clearTimeout(var)                                  # i must stock the setTimeout in a var to stop it using clearTimeout
+
+3 => setInterval(function({code}),time_on_ms)           # it run the function infinitely every time_on_ms
+
+4 => clearInterval(var)                                 # i must stock the setInterval in a var to stop it using clearInterval  
+
+===================================================== LocalStorage & SessionStorage =====================================================
+
+# The localStorage and sessionStorage are a stockage spaces 
+
+# You can add, read, delete data from the localStorage and sessionStorage
+
+# localStorage capacity = 5MB -> 10MB
+
+# sessionStorage capacity = 5MB
+
+# The value of the key is a string
+
+# The localStorage stores data permanently unless i delete it
+
+# The sessionStorage stores the data in the tab that means when i close it all the data will be deleted
+
+-------------------------- Add Data --------------------------
+
+1 => window.localStorage.setItem('key_name','value')
+
+2 => window.localStorage.key_name = 'value'
+
+# If i want to add a not string value for key i must use : JSON.stringify(value) instead of value
+
+-------------------------- Read Data --------------------------
+
+1 => console.log(window.localStorage.getItem('key_name'))
+
+2 => console.log(window.localStorage.key_name)
+
+3 => console.log(window.localStorage.key(index))
+
+# If i want to read (get) a not string value i must use : console.log(JSON.parse(window.localStorage.getItem('key_name'))) instead of console.log(window.localStorage
+                                                          .getItem('key_name'))
+
+-------------------------- Delete Data --------------------------
+
+1 => window.localStorage.removeItem('key_name')
+
+2 => window.localStorage.clear()

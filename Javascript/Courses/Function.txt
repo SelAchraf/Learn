@@ -1,0 +1,123 @@
+===================================================== Syntax =====================================================
+
+function function_name(parameter){
+  code;
+}
+function_name(parameter);
+
+# If the function haven't a return we can just call it
+
+===================================================== Return =====================================================
+
+function function_name(parameter){
+  code;
+  return something;
+}
+let var = function_name(parameter);
+console.log(var);
+
+# If the function have a return we can use it in another function 
+
+# when we want to display what it return we must stock it in a new var and print it or we can print it directly but we can't just call it
+
+===================================================== Hoisting =====================================================
+
+-------------------------- Using var --------------------------
+
+console.log(x);
+var x = 10;
+
+# JS see this code like this :
+      var x;
+      console.log(x);
+      x = 10;
+
+# So it don't show an error
+
+-------------------------- Using let --------------------------
+
+console.log(x);
+let x = 10;
+
+# JS see this code with the same structure so it show an error
+
+-------------------------- Using function --------------------------
+
+console.log(hello());
+function hello(){
+  return 1;
+}
+
+# JS see this code like this :
+  function hello(){
+    return 1;
+  }
+  console.log(hello());
+
+# So it don't show an error
+
+# When the function start with function like the first exemple it call a declaration but if it start with let it call expression like in this exemple :
+  let hello = function(){
+    return 1;
+  }
+
+# The expression type of function can't be hoisting
+
+-------------------------- Information --------------------------
+
+# The hoisting declare the variables in the window object
+
+===================================================== Scope & Self Invoked =====================================================
+
+# let it used for the local variable 
+
+# var it used for the global variable
+
+# When i use a self invoked function all the variables inside this function are local even if i use var, ex:
+  (function (){
+    var x = 5;
+    let y = 10;
+  })();
+
+===================================================== Arguments =====================================================
+
+# If i declare a function with one parameter and i call it without an argument it return undefined or NaN
+
+# I can add a default value for the parameter to display it if i don't add an argument when i call the function using this syntax :
+  function hello(name = default_value){
+    code;
+  }
+  hello();
+
+# When i don't know the number of arguments of the function i use this syntax :
+  function calc( ...num){
+    let result = 0;
+    for (let i = 0; i < num.lenght(); i++){
+      result += num = [i];
+    }
+    console.log(result); 
+  }
+  calc(10,1,200,186);
+
+===================================================== Arrow Function =====================================================
+
+# It is an expression function, and its syntax is :
+  les function_name = () => {
+    code;
+    return 1;
+  }
+
+# If the arrow function has only one statement i can remove return and {} like this : 
+  let function_name = () => 1;
+
+# If the arrow function hasn't a parameter i can replace the () with _ like this :
+  let function_name = _ => {
+    code;
+    return 1;
+  }
+
+# If the arrow function has only one parameter i can remove the () like this :
+  let function_name = parameter => {
+    code;
+    return 1;
+  }

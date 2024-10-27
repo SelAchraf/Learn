@@ -1,0 +1,45 @@
+===================================================== Convert to string =====================================================
+
+1 => String(10)        
+
+2 => (10).toString()       
+
+3 => x.toString()      
+
+4 => 10...toString()
+
+===================================================== String methods =====================================================
+
+1 => search()
+
+2 => .repeat()         
+
+3 => .lenght       
+
+4 => variable[index]            # if the index is out of the variable range it show undefined
+
+5 => .charAt(index)             # if the index is out of the variable range it don't show anything
+
+6 => .toUpperCase()
+
+7 => .toLowerCase()
+
+8 => .trim()                    # remove spaces from the left and the right of the variable not from the middle of it
+
+9 => .indexOf()                 # it return -1 if the element doesn't exist
+
+10 => .lastIndexOf()            # it return -1 if the element doesn't exist          
+
+11 => .split()
+
+12 => .slice()                  # it accept negative value (to read from the end)
+
+13 => .substring()              # it don't accept negative value
+
+14 => .substr()                 # the first value is for the start and the second is for the lenght of slicing
+
+15 => .includes()               # it return true or false
+
+16 => .startsWith()             # the second value is for the start
+
+17 => .endsWith()               # the second value is for the lenght
