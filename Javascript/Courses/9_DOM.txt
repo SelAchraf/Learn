@@ -20,6 +20,17 @@
 
 10 => document.forms
 
+----------------------------------------------------
+
+# When i use elements = document.querySelectorAll('') i can loop its content using :
+    elements.forEach(
+        element => {
+            element.event_name = function(){
+                code;
+            }
+        }
+    )
+
 ===================================================== Attribute =====================================================
 
 1 => element.hasAttributes()                                            # return true or false
@@ -130,11 +141,13 @@ document.body.appendChild(container);
 
 4 => element.onmouseover      # it work when the cursor enter into the element
 
-5 => element.onmouseout       # it work when the cursor comes out of the element
+5 => element.onmouseenter     # it work when the cursor enter inside the element (hover)
 
-6 => element.onmousemove      # it work as the cursor moves inside the element
+6 => element.onmouseout       # it work when the cursor comes out of the element
 
-7 => element.oncontextmenu    # it work when i click using the right click of the mouse
+7 => element.onmousemove      # it work as the cursor moves inside the element
+
+8 => element.oncontextmenu    # it work when i click using the right click of the mouse
 
 -------------------------- Keyboard Events --------------------------
 

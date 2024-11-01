@@ -1,0 +1,9 @@
+.photos img{
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+.main img{
+    width: 100%;
+    height: 550px;
+} 

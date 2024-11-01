@@ -1,0 +1,17 @@
+body{
+    margin:10px 0;
+}
+.container{
+    background-color: burlywood;
+    width: 150px;
+    padding: 5px;
+}
+
+#close_btn, #open_btn{
+    position: absolute;
+    left: 200px;
+}
+
+.hide{
+    display: none;
+}
