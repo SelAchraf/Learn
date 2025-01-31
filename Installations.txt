@@ -36,6 +36,16 @@ sudo apt update
 
 sudo apt upgrade
 
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb
+
+sudo apt install -y ./wkhtmltox_0.12.6.1-3.jammy_amd64.deb 
+
+sudo apt install npm
+
+sudo npm install -g rtlcss
+
+----------------------------------------- For Each Version -----------------------------------------
+
 git clone https://github.com/odoo/odoo.git -b <version> --depth 1 community 
 
 python3 -m venv venv
@@ -48,4 +58,12 @@ pip install wheel setuptools
 
 sudo apt install python3-pip libldap2-dev libpq-dev libsasl2-dev -y
 
+nano requirements.txt 
+
+commenter gevent => nano requirements.txt 
+
 pip install -r community/requirements.txt 
+
+pip install gevent
+
+start odoo => python /odoo/src/17.0/community/odoo-bin -c /odoo/etc/test.cfg

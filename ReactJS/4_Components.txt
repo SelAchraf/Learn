@@ -1,0 +1,31 @@
+=================================================================== Create Component ===================================================================
+
+# The first lettre of the component name must be capitalized
+
+# The return must return one bloc
+
+--------------------------------------------------- Using Function ---------------------------------------------------
+
+function Home(){
+    return (
+        <div>
+            <h1>Welcome to home page</h1>
+            <h1>this is the first component</h1>
+        </div>
+    )
+}
+ReactDOM.render(<Home/>, document.getElementById('root'));
+
+--------------------------------------------------- Using Class ---------------------------------------------------
+
+class Contact extends React.Component{
+    render(){
+        return (
+            <div>
+                <h1>Welcome to contact page</h1>
+                <Home/>
+            </div>
+        )
+    }
+}
+ReactDOM.render(<Contact/>, document.getElementById('root'));

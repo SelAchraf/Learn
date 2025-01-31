@@ -47,7 +47,7 @@ SELECT current_user; => Show the current role
 
 ===================================================== Connect to data base =====================================================
  
-sudo -i - u postgres                                                # Switch to the postgres user 
+sudo -i -u postgres                                                 # Switch to the postgres user 
 psql                                                                # Open the psql interface with the current role ( postgres )
 psql -U role_name -d database_name                                  # Open the psql interface with the a specefic role and access to the mentionned database 
 \c < data_base_name >                                               # Connect to a local database

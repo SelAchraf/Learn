@@ -1,0 +1,24 @@
+=================================================================== Installation ===================================================================
+
+--------------------------------------------------- Development links ---------------------------------------------------
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+--------------------------------------------------- Production links ---------------------------------------------------
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+# Replace 18 with the specific version number you wish to use
+# We can add this links in the head balise of the html file
+
+=================================================================== createElement() ===================================================================
+
+const element = React.createElement(
+    "p",
+    { className: "title" },
+    "Welcom to my learn experience"
+)
+
+ReactDOM.render(element, document.getElementById('root'));

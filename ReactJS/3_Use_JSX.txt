@@ -1,0 +1,41 @@
+=================================================================== Install Babel ===================================================================
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+# We must add the type="text/babel" to the script balise
+
+# We install babel to be able to use jsx
+
+=================================================================== Exemple ===================================================================
+
+--------------------------------------------------- without JSX ---------------------------------------------------
+
+const element = React.createElement(
+    "ul",
+    { className: "list" },
+    React.createElement(
+        "li",
+        null,
+        "mororco"
+    ),
+    React.createElement(
+        "li",
+        null,
+        "tunisie"
+    ),
+    React.createElement(
+        "li",
+        null,
+        "algeria"
+    )
+)
+
+--------------------------------------------------- with JSX ---------------------------------------------------
+
+const element = (
+    <ul className="list">
+        <li>mororco</li>
+        <li>tunisie</li>
+        <li>algeria</li>
+    </ul>
+)

@@ -1,0 +1,37 @@
+=================================================================== What is the VDOM ===================================================================
+
+# The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM 
+  by a library such as ReactDOM. This process is called reconciliation. 
+
+# This approach enables the declarative API of React: You tell React what state you want the UI to be in, and it makes sure the DOM matches that state.
+  
+# This abstracts out the attribute manipulation, event handling, and manual DOM updating that you would otherwise have to use to build your app.
+
+=================================================================== Exemple ===================================================================
+
+--------------------------------------------------- without VDOM ---------------------------------------------------
+
+function tick() {
+  document.getElementById("root").innerHTML = 
+    "<div><h1>Hello, world! -- JS DOM Rendering</h1><h2>It is "
+      + new Date().toLocaleTimeString()+
+    ".</h2></div>";
+}
+
+setInterval(tick, 1000);
+
+--------------------------------------------------- with VDOM ---------------------------------------------------
+
+function tick() {
+  const element = (
+     <div>
+      <h1>Hello, world! -- React DOM Rendering</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+     </div>
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
+
+# Koul ma ttbdl la valeur te3 element ttbdl automatiquement dekhl root (7esb l'exemple ada)
