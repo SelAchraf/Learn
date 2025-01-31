@@ -1,0 +1,52 @@
+=================================================================== Informations ===================================================================
+
+# Prpos is an public object (we can access to it from another class) used to store data and pass it from the parent component to the childs components
+
+# We can't update the value of the props
+
+# Exemple of an parent component:
+
+class Home extends React.Component{
+    render(){
+        return (
+            <div>
+                <h1>Welcome to home page</h1>
+                <About name="Selougha mohamed achraf" country="algeria" age="21">"A front end developer"</About>
+                <Contact title="course react js"/>
+            </div>
+        )
+    }
+}
+
+--------------------------------------------------- Using Function Child Component ---------------------------------------------------
+
+function Contact(props){
+    return <p>The title is {props.title}</p>
+
+}
+
+--------------------------------------------------- Using Class Child Component ---------------------------------------------------
+
+class About extends React.Component{
+    render(){
+        return <h1>My name is {this.props.name}, I'm from {this.props.country}, I'm {this.props.age} years old. {this.props.children}</h1>
+    }
+}
+
+# The {this.props.children} used to pass the content of the tag
+
+=================================================================== More Details ===================================================================
+
+class About extends React.Component{
+    render(){
+        const { country, name, age} = this.props
+
+        return <h1>My name is {name}, I'm from {country}, I'm {age} years old. {this.props.children}</h1>
+    }
+}
+
+# If i pass a lot of data in a props i can declare the in variables and use them after
+
+# The variables names must be the same as the names in the parent component
+
+# The order of variables declaration doesn't matter

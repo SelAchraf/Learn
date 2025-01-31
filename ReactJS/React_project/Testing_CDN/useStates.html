@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class About extends React.Component{
+            render(){
+                return <h1>My name is {this.props.data.user.name} {this.props.data.user.lastname}, I'm from {this.props.data.country[0]}, and I'm {this.props.data.age} years old. {this.props.children}</h1>
+            }
+        }
+
+        class Home extends React.Component{
+            constructor(props){
+                super(props)
+                this.increment = this.increment.bind(this)
+            }
+
+            state={
+                age: 20,
+                user:{
+                    name: "Selougha",
+                    lastnamme: "Mohamed Achraf",
+                },
+                country: ["algeria", "tunisie", "moroco"],
+                x: 0,
+                profile:{
+                    firstName: "Selougha",
+                    name: "Mouiz",
+                    age: 13,
+                }
+            }
+
+            increment(){
+                this.setState({
+                    x: this.state.x + 10
+                })
+            }
+
+            decrement(){
+                this.setState({
+                    x: this.state.x -1
+                })
+            }
+
+            multiple = ()=>{
+                this.setState({
+                    x: this.state.x * 2
+                })
+            }
+            
+            changeFirstName = (e)=>{
+                this.setState({
+                    profile:{
+                        ...this.state.profile,
+                        firstName: e.target.value,
+                    }
+                })
+            } 
+
+            render(){
+                return (
+                    <div>
+                        <h1>Welcome to home page</h1>
+                        <About data={this.state}/>
+                        <h5>The value of x is: {this.state.x}</h5>
+                        <button onClick={()=>{this.setState({x : this.state.x + 1})}}>Increment</button>
+                        <button onClick={this.decrement.bind(this)}>Decrement</button>
+                        <button onClick={this.multiple}>x * 2</button>
+                        <button onClick={this.increment}>x + 10</button>
+                        <h3>The first name of my brother is: {this.state.profile.firstName}</h3>
+                        <input type="text" onChange={this.changeFirstName}/>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Home/>, document.getElementById('root'));
+    </script>
+</body>
+</html>

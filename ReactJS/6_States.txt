@@ -1,0 +1,37 @@
+=================================================================== Informations ===================================================================
+
+# States is an private object (we can access to it obly from the current class) used to store data
+
+# In principle we can use states only with the class components (not function components) (react hooks make it be able to used in the function components)
+
+# To pass states (or its data) to another class we can do it by passing it inside a props
+
+# We can update the value of the states using (this.setState()), and it must be an event to mmake the update
+
+=================================================================== Exemple ===================================================================
+
+class About extends React.Component{
+    render(){
+        return <h1>My name is {this.props.data.user.name} {this.props.data.user.lastname} and I'm {this.props.data.age} years old. {this.props.children}</h1>
+    }
+}
+
+class Home extends React.Component{
+    state = {
+        age: 20,
+        user:{
+            name: "Selougha",
+            lastnamme: "Mohamed Achraf",
+        },
+        country: ["algeria", "tunisie", "moroco"]
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>Welcome to home page</h1>
+                <About data={this.state}/>
+            </div>
+        )
+    }
+}

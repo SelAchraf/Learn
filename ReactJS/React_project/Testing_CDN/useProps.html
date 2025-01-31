@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class About extends React.Component{
+            render(){
+                const {name, country, age} = this.props
+        
+                return <h1>My name is {name}, I'm from {country}, I'm {age} years old. {this.props.children}</h1>
+            }
+        }
+
+        function Contact(props){
+            return <p>The title is {props.title}</p>
+        
+        }
+
+        class Home extends React.Component{
+            render(){
+                return (
+                    <div>
+                        <h1>Welcome to home page</h1>
+                        <About name="Selougha mohamed achraf" country="algeria" age="21">"A front end developer"</About>
+                        <Contact title="course react js"/>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Home/>, document.getElementById('root'));
+    </script>
+</body>
+</html>

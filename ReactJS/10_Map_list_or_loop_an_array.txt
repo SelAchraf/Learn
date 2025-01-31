@@ -1,0 +1,45 @@
+=================================================================== Map List ===================================================================
+
+class About extends React.Component{
+    state = {
+        profile:[
+            {name: "Selougha", lastname: "Mohamed Achraf", age: "21"},
+            {name: "Selougha", lastname: "Ranim", age: "17"},
+            {name: "Selougha", lastname: "Mouiz", age: "14"},
+        ]
+    }
+
+--------------------------------------------------- First Method ---------------------------------------------------
+
+render(){
+    const data = this.state.profile.map((item)=>{
+        return(
+            <ul>
+                <li>{item.name}</li>
+                <li>{item.lastname}</li>
+                <li>{item.age}</li>
+            </ul>
+        )
+    }) 
+    return <div>{data}</div>
+}}
+
+--------------------------------------------------- First Method ---------------------------------------------------
+
+render(){    
+    return(
+        {this.state.profile.map((item, index)=>
+            <ul key = {item.index}>
+                <li>{item.name}</li>
+                <li>{item.lastname}</li>
+                <li>{item.age}</li>
+            </ul>
+        )}
+    )
+}
+
+--------------------------------------------------- Informations ---------------------------------------------------
+
+# We must add a key to the returned element in the map and it must be unique (we can use Math.random() or index if we haven't a unique attribute)
+
+# We can add a condition before the return of the map

@@ -1,0 +1,75 @@
+=================================================================== OnClick With SetState ===================================================================
+
+# We can use setState by 4 methods:
+
+class Home extends React.Component{
+    constructor(props){
+        super(props)
+        this.increment = this.increment.bind(this)
+    }
+
+    state={
+        x: 0,
+    }
+
+    increment(){
+        this.setState({
+            x: this.state.x + 10
+        })
+    }
+
+    decrement(){
+        this.setState({
+            x: this.state.x -1
+        })
+    }
+
+    multiple = ()=>{
+        this.setState({
+            x: this.state.x * 2
+        })
+    }
+
+    render(){
+        return (
+            <div>
+                <h1>Welcome to home page</h1>
+                <h5>The value of x is: {this.state.x}</h5>
+                <button onClick={()=>{this.setState({x : this.state.x + 1})}}>Increment</button>        # method 1 (direct arrow function)
+                <button onClick={this.decrement.bind(this)}>Decrement</button>                          # method 2 (using bind(this))
+                <button onClick={this.multiple}>x * 2</button>                                          # method 3 (indirect arrow function)
+                <button onClick={this.increment}>x + 10</button>                                        # method 4 (using constructor)
+            </div>
+        )
+    }
+}
+
+=================================================================== OnChange With SetState ===================================================================
+
+class Home extends React.Component{
+    state={
+        profile:{
+            firstName: "Selougha",
+            name: "Mouiz",
+            age: 13,
+        },
+    }
+    
+    changeFirstName = (e)=>{
+        this.setState({
+            profile:{
+                ...this.state.profile,                                              # To keep the same attributes of profile object with their values
+                firstName: e.target.value,
+            }
+        })
+    } 
+
+    render(){
+        return (
+            <div>
+                <h3>The first name of my brother is: {this.state.profile.firstName}</h3>
+                <input type="text" onChange={this.changeFirstName}/>
+            </div>
+        )
+    }
+}
