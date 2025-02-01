@@ -1,8 +1,10 @@
 import { Component } from 'react'
 import React from 'react'
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Link, NavLink, Route, Routes} from 'react-router-dom'
 import Home from './components/Home'
-import About from './components/About'
+import AboutWrapper from "./components/AboutWrapper";
+import DetailsWrapper from './components/Details'
+import Profile from './components/Profile'
 import './App.css'
 
 class App extends Component {
@@ -81,16 +83,20 @@ class App extends Component {
           <option value="Secure Protocol">Secure Protocol</option>
         </select>
         <p>The selected module is: {this.state.module}</p>
-      <BrowserRouter>
-        <Link to= '/'>Home</Link>
-        <br />
-        <Link to= '/about'>About</Link>
+        <BrowserRouter>
+          <NavLink isa to= '/'>Home</NavLink>
+          <br />
+          <NavLink activeClassName="active" to= '/about'>About</NavLink>
+          <br />
+          <NavLink activeClassName="active" to= '/details/profile'>Profile</NavLink>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutWrapper />} />
+            <Route path="/details/:name" element={<DetailsWrapper />} />
+            <Route path="/details/profile" element={<Profile />} />
+          </Routes>
+        </BrowserRouter>
       </>
     )
   }

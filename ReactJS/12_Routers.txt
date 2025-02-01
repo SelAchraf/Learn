@@ -12,7 +12,7 @@ class App extends Component {
       <BrowserRouter>
         <Link to= '/'>Home</Link>
         <br />
-        <Link to= '/about'>About</Link>cd 
+        <Link to= '/about'>About</Link>cd
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,3 +23,137 @@ class App extends Component {
   }
 }
 export default App
+
+=================================================================== How Pass And Get Parameters In Link ===================================================================
+
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+
+class App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+        <Link to= '/details'>Details</Link>
+
+        <Routes>
+          <Route path="/details/:name" element={<DetailsWrapper />} />
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+}
+export default App
+
+--------------------------------------------------
+
+import { Component } from "react";
+import { useParams } from "react-router-dom";
+
+class Details extends Component {
+    render() {
+        const { name } = this.props;
+        
+        return (
+            <h1>Welcome to details page of: {name}</h1>
+        );
+    }
+}
+
+const DetailsWrapper = () => {
+    let { name } = useParams();
+    return <Details name={name} />;
+};
+
+export default DetailsWrapper;
+
+=================================================================== UseNavigate() ===================================================================
+
+import { Component } from 'react'
+import React from 'react'
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+import Home from './components/Home'
+import AboutWrapper from "./components/AboutWrapper";
+import DetailsWrapper from './components/Details'
+import Profile from './components/Profile'
+import './App.css'
+
+class App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+        <Link to= '/about'>About</Link>
+        <br />
+        <Link to= '/details/profile'>Profile</Link>
+
+        <Routes>
+          <Route path="/about" element={<AboutWrapper />} />
+          <Route path="/details/profile" element={<Profile />} />
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+}
+export default App
+
+--------------------------------------------------
+
+import { useNavigate } from "react-router-dom";
+import About from "./About";
+
+export default function AboutWrapper() {
+    const navigate = useNavigate();
+    return <About navigate={navigate} />;
+}
+
+--------------------------------------------------
+
+import { Component } from "react";
+
+export default class About extends Component{
+    handleClick = ()=>{
+        this.props.navigate('/details/profile');
+    }
+    render(){
+        return(
+            <>
+                <h1>Welcom to about page</h1>
+                <button onClick={this.handleClick}>Go to the profile page</button>
+            </>
+        )
+    }
+}
+
+=================================================================== Navlink ===================================================================
+
+import { Component } from 'react'
+import React from 'react'
+import {BrowserRouter, NavLink, Route, Routes} from 'react-router-dom'
+import Home from './components/Home'
+import AboutWrapper from "./components/AboutWrapper";
+import DetailsWrapper from './components/Details'
+import Profile from './components/Profile'
+import './App.css'
+
+class App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+        <NavLink activeClassName="active" to= '/'>Home</NavLink>
+        <br />
+        <NavLink activeClassName="active" to= '/about'>About</NavLink>
+        <br />
+        <NavLink activeClassName="active" to= '/details/profile'>Profile</NavLink>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutWrapper />} />
+          <Route path="/details/profile" element={<Profile />} />
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+}
+export default App
+
+# We can use className={({ isActive }) => (isActive ? "active" : "")}
+
+# We can use style={({ isActive }) => ({fontWeight: isActive ? "bold" : "normal", color: isActive ? "red" : "black",})}
