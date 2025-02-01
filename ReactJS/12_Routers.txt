@@ -1,0 +1,25 @@
+=================================================================== Installation ===================================================================
+
+npm install react-router react-router-dom
+
+=================================================================== How To Use Routers ===================================================================
+
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+
+class App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+        <Link to= '/'>Home</Link>
+        <br />
+        <Link to= '/about'>About</Link>cd 
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+}
+export default App

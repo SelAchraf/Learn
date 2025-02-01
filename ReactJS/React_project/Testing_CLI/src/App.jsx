@@ -1,35 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Component } from 'react'
+import React from 'react'
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends Component {
+  state = {
+    name:undefined,
+    gender:undefined,
+    algeria: undefined,
+    moroco: undefined,
+    module: "",
+  }
+  
+  handleName = (e)=>{
+    this.setState({
+      name: e.target.value
+    })
+  }  
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  handleTextarea = (e)=>{
+    console.log(e.target.value)
+  }
+  
+  handleRadio = (e)=>{
+    this.setState({
+      gender: e.target.value
+    })
+  }
+  
+  
+  handleCheck = (e)=>{
+    if (e.target.checked && e.target.name == 'Algeria'){
+      this.setState({
+          algeria: e.target.name
+        })
+      }
+    if (e.target.checked && e.target.name == 'Moroco'){
+      this.setState({
+          moroco: e.target.name
+        })
+      }
+      if (!e.target.checked && e.target.name == 'Algeria'){
+        this.setState({
+          algeria: undefined
+        })
+    }
+    if (!e.target.checked && e.target.name == 'Moroco'){
+      this.setState({
+        moroco: undefined
+      })
+    }
+  }  
+  
+  handleSelect = (e)=>{
+    this.setState({
+      module: e.target.value
+    })
+  }
+  
+  render(){
+    return (
+      <>
+        <input type="text" onChange={this.handleName}/>
+        <p>The name is: {this.state.name}</p>
+        <textarea onChange={this.handleTextarea}></textarea>
+        <br />
+        Men: <input type="radio" name='gender' value='men' onChange={this.handleRadio}/>
+        Women: <input type="radio" name='gender' value='women' onChange={this.handleRadio}/>
+        <p>The gender is: {this.state.gender}</p>
+        Algeria: <input type="checkbox" name="Algeria" onChange={this.handleCheck} />
+        Moroco: <input type="checkbox" name="Moroco" onChange={this.handleCheck} />
+        <p>{this.state.algeria}</p>
+        <p>{this.state.moroco}</p>
+        <select onChange={this.handleSelect} value={this.state.module}>
+          <option value="" disabled>Module</option>
+          <option value="MOO">MOO</option>
+          <option value="TG">TG</option>
+          <option value="Secure Protocol">Secure Protocol</option>
+        </select>
+        <p>The selected module is: {this.state.module}</p>
+      <BrowserRouter>
+        <Link to= '/'>Home</Link>
+        <br />
+        <Link to= '/about'>About</Link>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
+      </>
+    )
+  }
 }
-
 export default App
