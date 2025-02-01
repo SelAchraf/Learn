@@ -1,0 +1,14 @@
+=================================================================== Indtroduction ===================================================================
+
+1 => constructor                                            # For the state and props declaration...
+
+2 => shouldComponentUpdate(nextProps, nextState)            # It return a boolean value
+
+3 => render                                                 # For the html code (it may have js functions) and it called in every changes 
+
+4 => componentDidMount()                                    # For connecting code with a backend and it call one time when i refresh the page
+
+5 => componentDidUpdate(prevProps, prevState, snapshot)     # It called in every change
+
+6 => componentWillUnmount                                   # it called when we leave the component (for exemple to close connecting to the database, 
+                                                              remove local storage or anything else)
