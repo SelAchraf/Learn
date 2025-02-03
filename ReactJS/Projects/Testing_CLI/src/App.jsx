@@ -84,7 +84,7 @@ class App extends Component {
         </select>
         <p>The selected module is: {this.state.module}</p>
         <BrowserRouter>
-          <NavLink isa to= '/'>Home</NavLink>
+          <NavLink activeClassName="active" to= '/'>Home</NavLink>
           <br />
           <NavLink activeClassName="active" to= '/about'>About</NavLink>
           <br />

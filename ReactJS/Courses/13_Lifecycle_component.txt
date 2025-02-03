@@ -12,3 +12,5 @@
 
 6 => componentWillUnmount                                   # it called when we leave the component (for exemple to close connecting to the database, 
                                                               remove local storage or anything else)
+
+# We can't use lifecycle components in a function component                                                             

@@ -1,0 +1,74 @@
+=================================================================== Introduction ===================================================================
+
+# To use states or lifecycle components in a function component we must use hooks
+
+--------------------------------------------------- UseState() ---------------------------------------------------
+
+function App(){
+    const [count, setCount] = useState(initial_value_of_count);
+    return (
+        <div>
+            <h1>The value of count is: {count}</h1>
+            <button onClick={()=>setCount(count+1)}>Increment</button>
+            <button onClick={()=>setCount(count-1)}>Decrement</button>
+        </div>
+    )
+}
+export default App
+
+--------------------------------------------------- UseEffect() ---------------------------------------------------
+
+# We can use more than one useEffect()
+
+# It play the role of componentDidMount and componentDidUpdate
+
+function App(){
+  const [count, setCount] = useState(initial_value_of_count);
+  const [x, setX] = useState(initial_value_of_count);
+
+  //componentDidMount
+  useEffect(()=>{
+      console.log("welcome 1")
+  }, [])
+
+  //componentDidMount and componentDidUpdate
+  useEffect(()=>{
+      console.log("welcome 2")
+  })
+
+  //componentDidMount and componentDidUpdate only for x
+  useEffect(()=>{
+      console.log("welcome 3")
+  }, [x])
+
+  return (
+      <div>
+          <h1>The value of count is:{count}</h1>
+          <h1>The value of x is:{x}</h1>
+          <button onClick={()=>setCount(count+1)}>Increment count</button>
+          <button onClick={()=>setX(x+1)}>Increment x</button>
+      </div>
+  )
+}
+export default App
+
+--------------------------------------------------- UseRef() ---------------------------------------------------
+  
+function App(){
+  const firstname = useRef()
+  const age = useRef()
+  const image = useRef()
+
+  return (
+      <div>
+        <input type="text" ref={firstname}/>
+        <input type="number" ref={age}/>
+        <input type="file" ref={image} multiple/>
+        <br />
+        <button onClick={()=>{console.log(firstname.current.value)}}>Print firstname</button>
+        <button onClick={()=>{console.log(age.current.value)}}>Print age</button>
+        <button onClick={()=>{console.log(image.current.files)}}>Print image</button>
+      </div>
+  )
+}
+export default App
