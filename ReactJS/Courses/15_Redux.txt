@@ -1,3 +1,27 @@
 =================================================================== Installation ===================================================================
 
 # npm install redux react-redux
+
+# npm install @reduxjs/toolkit react-redux
+
+=================================================================== Connect React With Redux ===================================================================
+
+--------------------------------------------------- Create Store ---------------------------------------------------
+
+# In the main component (the parent, for exemple index.js)
+
+# const store = createstore(reducer)
+
+--------------------------------------------------- Create Reducer ---------------------------------------------------
+
+# In the src folder we create a folder 'reducers', and we create inside it a file 'firstReducer.js'
+
+const initState = {
+    x:0,
+}
+
+const reducer = (state = initState, action)=>{
+
+}
+
+export default reducer

@@ -1,0 +1,5 @@
+=================================================================== Introduction ===================================================================
+
+# In the component folder we create 2 folders: 'user' and 'admin'
+
+# We add an interface component inside each folder
